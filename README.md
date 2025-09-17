@@ -59,9 +59,10 @@ elmo-hikes/
 
 
 ## Contributors
-- Faye - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: Love playing puzzles.
-- Ryan - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
-- Brendan - 
+- **Ryan** - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: Loves solving Rubik's Cubes in under a minute.
+- **Brendan** - BCIT CST Student, Backend developer perfecr in his job. Fun fact: He has Ford Mustang
+- **Faye** - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: Love playing puzzles.
+
 
 ---
 
