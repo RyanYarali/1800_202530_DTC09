@@ -11,7 +11,7 @@
 
 /* Brand */
 .navbar-brand a {
-  font-size: 1.8rem; /* ~text-3xl */
+  font-size: 2.2rem; /* ~text-3xl */
   font-weight: 300; /* thin */
   color: #f6bd60; /* Warm Yellow */
   text-decoration: none;
@@ -23,8 +23,8 @@
 }
 
 .navbar-links a {
-  margin-left: 0.8rem;
-  font-size: 1rem;
+  margin-left: 1.2rem;
+  font-size: 1.5rem;
   color: #f7ede2; /* Cream */
   text-decoration: none;
   transition: color 0.3s ease;
@@ -53,7 +53,7 @@
   padding-bottom: 0.2rem;
   color: #14453d;
   font-weight: 400;
-  font-size: 0.7rem; /* Smaller text */
+  font-size: 1rem; /* Smaller text */
   cursor: pointer;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
@@ -68,8 +68,8 @@
 
 /* Profile icon */
 .profile-icon img {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   cursor: pointer;
   border: 2px solid #f5cac3; /* Light pink outline */
