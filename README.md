@@ -58,12 +58,6 @@ elmo-hikes/
 - **Ryan** - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: Loves solving Rubik's Cubes in under a minute.
 - **Brendan** - BCIT CST Student, Backend developer perfecr in his job. Fun fact: He has Ford Mustang
 - **Faye** - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: Love playing puzzles.
-
-
-- **Brendan** - BCIT CST Student, enjoys problem solving and playing video games.
-- **Ryan**
-- **Faye**
-
 ---
 
 ## Acknowledgments
