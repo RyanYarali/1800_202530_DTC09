@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Add Task</title>
 		<link rel="stylesheet" href="tasks.css" />
-		<script src="taskTransfer.js"></script>
+		<script src="taskSave.js" defer></script>
 	</head>
 	<body style="background-color: #f7ede2; margin: 0px">
 		<nav
@@ -39,29 +39,27 @@
 					<input type="text" id="course" name="course"/>
 				</div>
 				<div class="col">
-					<label for="course">Task Name:</label>
+					<label for="name">Task Name:</label>
 					<input type="text" id="name" name="name"/>
 				</div>
 				<div class="col">
-					<label for="course">Description:</label>
+					<label for="description">Description:</label>
 					<input type="text" id="description" name="description"/>
 				</div>
 				<div class="col">
-					<label for="course">Due Date:</label>
-					<input type="date" id="description" name="description"/>
+					<label for="date">Due Date:</label>
+					<input type="date" id="date" name="date"/>
 				</div>
 				<div class="col">
-					<label for="course">Priority:</label>
-					<select name="dropdownName" id="dropdownId">
+					<label for="priority">Priority:</label>
+					<select name="priority" id="priority">
 						<option value="value1">Low</option>
 						<option value="value2">Medium</option>
 						<option value="value3">High</option>
 					</select>
 				</div>
-			</form>
-			<div style="margin: 10px;">
 				<button type="submit">Save & Continue</button>
-			</div>
+			</form>
 		</main>
 		<footer class="footer">
 			<div class="footer-content">

@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Tasks</title>
         <link rel="stylesheet" href="tasks.css">
+		<script src="taskLoad.js" defer></script>
 	</head>
 	<body style="background-color: #f7ede2; margin: 0px">
 		<nav
@@ -27,17 +28,11 @@
 		</nav>
 		<main style="display: grid">
 			<div style="margin: 10px">Filter</div>
-			<a href="taskDetail.html">
-                <div class="col">
-                    <h2>Date</h2>
-                    <div class="card">
-                        <div>
-                            <p>Course Name</p>
-                        </div>
-                        <p>Task Name</p>
-                        <p>Due Time</p>
-                    </div>
-            </a>
+			<div id="events-container" style="
+			flex-direction: column;
+			margin: 10px;
+			justify-content: space-between;
+			">
 			</div>
 		</main>
 		<footer class="footer">

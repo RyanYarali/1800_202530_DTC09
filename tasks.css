@@ -17,6 +17,7 @@ div {
 	padding: 10px;
 	transition: background-color 0.3s ease;
 	border-radius: 20px;
+	width: 100%;
 }
 
 .card {
