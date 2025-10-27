@@ -1,0 +1,32 @@
+:root {
+  --accent-color: #f28482;
+  --base-color: #f7ede2;
+  --text-color: #2e2e2e;
+  --input-color: #f5cac3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 12pt;
+  color: var(--text-color);
+  text-align: center;
+}
+
+body {
+  min-height: 100vh;
+  background-image: url("../signup_material/bg_img.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.wrapper {
+  background-color: var(--base-color);
+  height: 100vh;
+  width: max(40%, 600px);
+}
