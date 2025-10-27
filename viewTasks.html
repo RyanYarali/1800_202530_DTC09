@@ -1,98 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Tasks</title>
-        <link rel="stylesheet" href="tasks.css">
-		<script src="taskLoad.js" defer></script>
-	</head>
-	<body style="background-color: #f7ede2; margin: 0px">
-		<nav
-			style="
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				background-color: #f6bd60;
-			"
-		>
-			<h1 style="margin: 10px">TaskMate</h1>
-			<h1>All Tasks</h1>
-			<a href="login.html"
-				><img
-					src="
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tasks</title>
+    <link rel="stylesheet" href="tasks.css" />
+    <script src="taskLoad.js" defer></script>
+  </head>
+  <body style="background-color: #f7ede2; margin: 0px">
+    <nav
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f6bd60;
+      "
+    >
+      <h1 style="margin: 10px">TaskMate</h1>
+      <h1>All Tasks</h1>
+      <a href="login.html"
+        ><img
+          src="
             https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?20170328184010
             "
-					style="width: 42px; border-radius: 50px; margin: 10px"
-			/></a>
-		</nav>
-		<main style="display: grid">
-			<div style="margin: 10px">Filter</div>
-			<div id="events-container" style="
-			flex-direction: column;
-			margin: 10px;
-			justify-content: space-between;
-			height: 80%;
-			">
-			</div>
-		</main>
-		<footer class="footer">
-			<div class="footer-content">
-				<a href="#" class="footer-link">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="icon"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 
-        2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-						/>
-					</svg>
-					<span class="link-text">Timetable</span>
-				</a>
+          style="width: 42px; border-radius: 50px; margin: 10px"
+      /></a>
+    </nav>
+    <main style="display: grid">
+      <div style="margin: 10px">Filter</div>
+      <div
+        id="events-container"
+        style="
+          flex-direction: column;
+          margin: 10px;
+          justify-content: space-between;
+          height: 80%;
+        "
+      ></div>
+    </main>
+    <footer class="footer">
+      <div class="footer-content">
+        <a href="#" class="footer-link">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#84A59D"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8"
+            />
+            <path d="M14 19l2 2l4 -4" />
+            <path d="M9 8h4" />
+            <path d="M9 12h2" />
+          </svg>
 
-				<a href="addTask.html" class="center-btn">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="icon"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M12 4v16m8-8H4"
-						/>
-					</svg>
-				</a>
+          <span class="text-xs">Task</span>
+        </a>
 
-				<a href="#" class="footer-link">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="icon"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M3 12l2-2m0 0l7-7 7 7m-9 2v8m4-8v8m5 
+        <a href="addTask.html" class="center-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 4v16m8-8H4"
+            />
+          </svg>
+        </a>
+
+        <a href="#" class="footer-link">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7m-9 2v8m4-8v8m5 
         0h-4a2 2 0 01-2-2v-6H9v6a2 2 0 01-2 2H3"
-						/>
-					</svg>
-					<span class="link-text">Home</span>
-				</a>
-			</div>
-		</footer>
-	</body>
+            />
+          </svg>
+          <span class="link-text">Home</span>
+        </a>
+      </div>
+    </footer>
+  </body>
 </html>
