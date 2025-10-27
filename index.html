@@ -1,56 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>My BCIT Project</title>
-    <meta name="comp1800 template" content="My 1800 App" />
+	<head>
+		<title>My BCIT Project</title>
+		<meta name="comp1800 template" content="My 1800 App" />
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Other libraries go here -->
+		<!-- Other libraries go here -->
 
-    <!-- Link to styles of your own -->
-    <link rel="stylesheet" href="./styles/style.css" />
-  </head>
+		<!-- Link to styles of your own -->
+		<link rel="stylesheet" href="./styles/style.css" />
+	</head>
 
-  <body>
-    <!-- Your HTML Layout go here -->
-    <nav class="navbar">
-      <div class="navbar-brand">
-        <a href="#">All-in-One Schedule</a>
-      </div>
+	<body>
+		<!-- Your HTML Layout go here -->
+		<nav class="navbar">
+			<div class="navbar-brand">
+				<a href="#">TaskMate</a>
+			</div>
 
-      <div class="navbar-links">
-        <a href="#">Home</a>
-        <a href="#">Timetable</a>
-        <a href="#">Add New</a>
-        <a href="#">Review</a>
-        <a href="#">FAQ</a>
-        <a href="#">About Us</a>
-        <a href="#">Contact Us</a>
-      </div>
+			<div class="navbar-links">
+				<a href="#">Home</a>
+				<a href="#">Timetable</a>
+				<a href="#">Add New</a>
+				<a href="#">Review</a>
+				<a href="#">FAQ</a>
+				<a href="#">About Us</a>
+			</div>
 
-      <div class="account-section">
-        <!-- Profile Icon (shown after login) -->
-        <div class="profile-icon" title="Profile">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
-            alt="Profile Icon"
-          />
-        </div>
-        <!-- Login Button (shown before login) -->
-        <button class="login-btn">Login</button>
-      </div>
-    </nav>
+			<div class="account-section">
+				<!-- Profile Icon (shown after login) -->
+				<div class="profile-icon" title="Profile">
+					<img
+						src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+						alt="Profile Icon"
+					/>
+				</div>
+				<!-- Login Button (shown before login) -->
+				<button class="login-btn">Login</button>
+			</div>
+		</nav>
+		<section class="hero-section">
+			<div class="background" style="height: 200px">
+				<div
+					style="
+						display: flex;
+						position: absolute;
+						width: 100%;
+						flex-direction: column;
+						justify-content: center;
+						color: #f6bd60;
+					"
+				>
+					<h1 style="filter: drop-shadow(0 0 1px black)">
+						Want To Take Control Of Your Time?
+					</h1>
+					<p style="filter: drop-shadow(0 0 1px black)">
+						TaskMate is here for you.
+					</p>
+				</div>
+				<div
+					style="
+						display: flex;
+						position: absolute;
+						width: 100%;
+						bottom: 10%;
+						flex-direction: row;
+						justify-content: space-evenly;
+					"
+				>
+					<button class="cta-btn">Sign Up</button>
+					<button class="cta-btn">Features</button>
+				</div>
+			</div>
+		</section>
 
-    <!-- Stuff for body goes here -->
+		<section class="cta-section">
+			<h2>Ready to stay ahead of time?</h2>
+			<p>Learn About TaskMate Today.</p>
+			<button class="cta-btn">Learn More</button>
+		</section>
 
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
+		<footer class="footer">
+			<div class="footer-content">
+				<div class="footer-brand">
+					<h3>TaskMate</h3>
+					<p>Helping you stay organized, one task at a time.</p>
+				</div>
 
-    <!-- Link to scripts of your own -->
-    <!-- <script type="module" src="./src/main.js"></script> -->
-  </body>
+				<div class="footer-links">
+					<a href="#">Privacy Policy</a>
+					<a href="#">Terms of Service</a>
+					<a href="#">Conatct Us</a>
+				</div>
+
+				<div class="footer-social">
+					<a href="#"
+						><img
+							src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
+							alt="Facebook"
+					/></a>
+					<a href="#"
+						><img
+							src="https://cdn-icons-png.flaticon.com/512/733/733558.png"
+							alt="Instagram"
+					/></a>
+				</div>
+			</div>
+
+			<div class="footer-bottom">
+				<p>&copy; 2025 TaskMate. All rights reserved.</p>
+			</div>
+		</footer>
+
+		<!---------------------------------------------->
+		<!-- Your own JavaScript functions go here    -->
+		<!---------------------------------------------->
+
+		<!-- Link to scripts of your own -->
+		<!-- <script type="module" src="./src/main.js"></script> -->
+	</body>
 </html>
