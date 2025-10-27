@@ -1,0 +1,243 @@
+:root {
+  --accent-color: #f28482;
+  --base-color: #f7ede2;
+  --text-color: #2e2e2e;
+  --input-color: #f5cac3;
+  --background-color:#84a59d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 12pt;
+  color: var(--text-color);
+  text-align: center;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--background-color); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 2rem;
+}
+
+.wrapper {
+  flex: 0 0 40%;
+  box-sizing: border-box;
+  background-color: var(--base-color);
+  height: 100vh;
+  width: max(40%, 600px);
+  padding: 10px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.app-name {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+form {
+  width: min(400px, 100%);
+  margin-top: 20px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+form > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+form label {
+  flex-shrink: 0;
+  height: 50px;
+  width: 50px;
+  background-color: var(--accent-color);
+  fill: var(--base-color);
+  border-radius: 10px 0 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+form input {
+  box-sizing: border-box;
+  flex-grow: 1;
+  min-width: 0;
+  height: 50px;
+  padding: 1em;
+  font: inherit;
+  border-radius: 0 10px 10px 0;
+  border: 2px solid var(--input-color);
+  border-left: none;
+  background-color: var(--input-color);
+  transition: 150ms ease;
+}
+
+form input:hover {
+  border-color: var(--accent-color);
+}
+
+form input:focus {
+  outline: none;
+  border-color: var(--background-color);
+}
+
+div:has(input:focus) > label {
+  background-color: var(--background-color);
+}
+
+form input::placeholder {
+  color: var(--background-color);
+}
+
+form button {
+  margin-top: 10px;
+  border: none;
+  border-radius: 1000px;
+  padding: 0.85em 4em;
+  background-color: var(--accent-color);
+  color: var(--base-color);
+  font: inherit;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 150ms ease;
+}
+
+form button:hover {
+  background-color: var(--background-color);
+}
+
+form button:focus {
+  outline: none;
+  background-color: var(--background-color);
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 40%;
+    border-radius: 20px;
+  }
+}
+
+
+@media (max-width: 1199px) and (min-width: 768px) {
+  body {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+  }
+
+  .wrapper {
+    width: 70%;
+    height: auto;
+    border-radius: 20px;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+
+@media (max-width: 767px) {
+  body {
+    background-size: contain;
+    background-position: top;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  .slogan{
+    display: none;
+  }
+
+  .app-name{
+    display: block;
+    font-size: 3rem;
+
+  }
+
+  .wrapper {
+    width: 90%;
+    height: auto;
+    border-radius: 20px;
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  form label {
+    height: 45px;
+    width: 45px;
+  }
+
+  form input {
+    height: 45px;
+  }
+
+  form button {
+    width: 100%;
+    padding: 0.8em;
+  }
+}
+
+
+form div.incorrect label {
+
+  background-color: #f06272;
+}
+
+form div.incorrect input {
+  background-color: #f06272;
+}
+
+#error-message{
+    color: #f06272;
+}
