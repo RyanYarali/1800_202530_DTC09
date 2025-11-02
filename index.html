@@ -11,37 +11,18 @@
 		<!-- Other libraries go here -->
 
 		<!-- Link to styles of your own -->
-		<link rel="stylesheet" href="./styles/style.css" />
+		<link rel="stylesheet" href="./src/styles/style.css" />
+		<script type="module" src="/src/components/site-navbar.js"></script> 
+		<script type="module" src="/src/components/site-footer.js"></script>
 	</head>
 
 	<body>
 		<!-- Your HTML Layout go here -->
-		<nav class="navbar">
-			<div class="navbar-brand">
-				<a href="#">TaskMate</a>
-			</div>
+		<!-- our own navbar goes here -->
+    	<site-navbar></site-navbar>
 
-			<div class="navbar-links">
-				<a href="#">Home</a>
-				<a href="#">Timetable</a>
-				<a href="#">Add New</a>
-				<a href="#">Review</a>
-				<a href="#">FAQ</a>
-				<a href="#">About Us</a>
-			</div>
-
-			<div class="account-section">
-				<!-- Profile Icon (shown after login) -->
-				<div class="profile-icon" title="Profile">
-					<img
-						src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
-						alt="Profile Icon"
-					/>
-				</div>
-				<!-- Login Button (shown before login) -->
-				<button class="login-btn">Login</button>
-			</div>
-		</nav>
+		<!-- Main content goes here -->
+    	<!-- This is the welcome on the landing page, with a login/signup button -->
 		<section class="hero-section">
 			<div class="background" style="height: 200px">
 				<div
@@ -71,8 +52,8 @@
 						justify-content: space-evenly;
 					"
 				>
-					<button class="cta-btn">Sign Up</button>
-					<button class="cta-btn">Features</button>
+					<button onclick="window.location.href='signup.html'" type="button" class="cta-btn">Sign Up</button>
+					<button onclick="window.location.href='login.html'" type="button" class="cta-btn">Log in</button>
 				</div>
 			</div>
 		</section>
@@ -83,37 +64,8 @@
 			<button class="cta-btn">Learn More</button>
 		</section>
 
-		<footer class="footer">
-			<div class="footer-content">
-				<div class="footer-brand">
-					<h3>TaskMate</h3>
-					<p>Helping you stay organized, one task at a time.</p>
-				</div>
-
-				<div class="footer-links">
-					<a href="#">Privacy Policy</a>
-					<a href="#">Terms of Service</a>
-					<a href="#">Conatct Us</a>
-				</div>
-
-				<div class="footer-social">
-					<a href="#"
-						><img
-							src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
-							alt="Facebook"
-					/></a>
-					<a href="#"
-						><img
-							src="https://cdn-icons-png.flaticon.com/512/733/733558.png"
-							alt="Instagram"
-					/></a>
-				</div>
-			</div>
-
-			<div class="footer-bottom">
-				<p>&copy; 2025 TaskMate. All rights reserved.</p>
-			</div>
-		</footer>
+		<!-- our own footer goes here -->
+    	<site-footer></site-footer>
 
 		<!---------------------------------------------->
 		<!-- Your own JavaScript functions go here    -->
