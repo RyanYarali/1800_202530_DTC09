@@ -1,0 +1,13 @@
+                <div class="account-section">
+                    <!-- Profile Icon (shown after login) -->
+                    <div class="profile-icon" title="Profile">
+                        <img
+                            src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+                            alt="Profile Icon"
+                        />
+                    </div>
+                    <!-- Login Button (shown before login) -->
+                    <button class="login-btn">Login</button>
+                </div>
+
+                save under profile and login button 
