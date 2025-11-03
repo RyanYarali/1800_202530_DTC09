@@ -27,3 +27,4 @@ document.getElementById("delete").addEventListener("click", function() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
     window.location.href = "viewTasks.html";
 });
+

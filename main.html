@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome | TaskMate</title>
+    <link rel="stylesheet" href="./src/styles/style.css" />
+		<script type="module" src="/src/components/site-navbar.js"></script> 
+		<!-- <script type="module" src="/src/components/site-footer.js"></script> -->
+    <script type="module" src="/src/components/site-bottom-bar.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -23,17 +27,9 @@
   </head>
 
   <body class="bg-cream flex flex-col min-h-screen">
-    <header class="bg-mustard shadow">
-      <div
-        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
-      >
-        <h1 class="text-2xl font-bold text-white">TaskMate</h1>
-        <nav>
-          <a href="login.html" class="text-white hover:text-blush">Log in</a>
-        </nav>
-      </div>
-    </header>
-
+    <!-- our own navbar goes here -->
+    <site-navbar></site-navbar>
+  
     <main class="flex-grow flex items-center justify-center text-center px-6">
       <div class="max-w-2xl">
         <h2 class="text-4xl font-extrabold text-teal mb-4">
@@ -44,25 +40,10 @@
           One task at a time.
         </p>
 
-        <div class="flex gap-4 items-center justify-center text-center">
-          <a
-            href="signup.html"
-            class="inline-block bg-coral text-white px-6 py-3 rounded-lg shadow hover:bg-blush transition"
-          >
-            Sign up
-          </a>
-
-          <a
-            href="login.html"
-            class="inline-block bg-coral text-white px-6 py-3 rounded-lg shadow hover:bg-blush transition"
-          >
-            Log in
-          </a>
-        </div>
       </div>
     </main>
 
-    <footer
+    <!-- <footer
       class="fixed bottom-0 left-0 w-full bg-cream border-t border-gray-300"
     >
       <div class="flex justify-between items-center px-6 py-3 relative">
@@ -135,6 +116,8 @@
           <span class="text-xs">Home</span>
         </a>
       </div>
-    </footer>
+    </footer> -->
+    <!-- <site-footer></site-footer> -->
+    <site-bottom-bar></site-bottom-bar>
   </body>
 </html>

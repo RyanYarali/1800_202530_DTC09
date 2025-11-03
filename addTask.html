@@ -4,10 +4,31 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Add Task</title>
-		<link rel="stylesheet" href="tasks.css" />
-		<script src="taskSave.js" defer></script>
+		<link rel="stylesheet" href="./src/styles/tasks.css" />
+    	<link rel="stylesheet" href="./src/styles/style.css" />
+		<script type="module" src="/src/components/site-navbar.js"></script> 
+		<script type="module" src="/src/components/site-bottom-bar.js"></script>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+			theme: {
+			extend: {
+			colors: {
+				mustard: "#F6BD60",
+				cream: "#F7EDE2",
+				blush: "#F5CAC3",
+				teal: "#84A59D",
+				coral: "#F28482",
+			},
+			},
+			},
+			};
+		</script>
+		<script src="./src/taskSave.js" defer></script>
+
 	</head>
 	<body style="background-color: #f7ede2; margin: 0px">
+		<site-navbar></site-navbar>
 		<nav
 			style="
 				display: flex;
@@ -31,10 +52,11 @@
 			display: flex;
 			flex-direction: column;
 			margin: 10px;
+			padding-right: 5%;
 			align-content: space-between;
 			height: 100%;
 			">
-				<div class="col"">
+				<div class="col">
 					<label for="course">Course Name:</label>
 					<input type="text" id="course" name="course"/>
 				</div>
@@ -58,28 +80,32 @@
 						<option value="High">High</option>
 					</select>
 				</div>
-				<button type="submit">Save & Continue</button>
+				<div class="col"><button type="submit">Save & Continue</button></div>
 			</form>
 		</main>
-		<footer class="footer">
+		<!-- <footer class="footer">
 			<div class="footer-content">
 				<a href="#" class="footer-link">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
-						class="icon"
-						fill="none"
+						width="32"
+						height="32"
 						viewBox="0 0 24 24"
-						stroke="currentColor"
+						fill="none"
+						stroke="#84A59D"
+						stroke-width="1"
+						stroke-linecap="round"
+						stroke-linejoin="round"
 					>
 						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 
-        2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+						d="M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8"
 						/>
+						<path d="M14 19l2 2l4 -4" />
+						<path d="M9 8h4" />
+						<path d="M9 12h2" />
 					</svg>
-					<span class="link-text">Timetable</span>
+
+          			<span class="text-xs">Task</span>
 				</a>
 
 				<a href="addTask.html" class="center-btn">
@@ -118,6 +144,7 @@
 					<span class="link-text">Home</span>
 				</a>
 			</div>
-		</footer>
+		</footer> -->
+		<site-bottom-bar></site-bottom-bar>
 	</body>
 </html>
