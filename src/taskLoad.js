@@ -29,7 +29,7 @@ onAuthReady(async (user) => {
     card.classList.add("card");
     
     card.innerHTML = `
-      <div class="col" >
+      <div class="col">
         <h2>Due: ${task.date || "No due date"}</h2>
         <div class="card">
           <p>${task.course || "No course"}</p>
