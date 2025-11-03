@@ -26,16 +26,17 @@ class SiteNavbar extends HTMLElement {
                     <a href="#">FAQ</a>
                     <a href="#">About Us</a>
                 </div>
+                <div id="authControls" class="auth-controls inline-block bg-coral text-white px-6 py-3 rounded-lg shadow hover:bg-blush transition">
 
             </nav>
         `;
   }
   renderAuthControls() {
     const authControls = this.querySelector("#authControls");
-// 
+
     // Initialize with invisible placeholder to maintain layout space
     authControls.innerHTML = `<div class="btn btn-outline-light" style="visibility: hidden; min-width: 80px;">Log out</div>`;
-// 
+
     onAuthStateChanged(auth, (user) => {
       let updatedAuthControl;
       if (user) {
