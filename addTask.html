@@ -5,27 +5,27 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Add Task</title>
 		<link rel="stylesheet" href="./src/styles/tasks.css" />
-    	<link rel="stylesheet" href="./src/styles/style.css" />
-		<script type="module" src="/src/components/site-navbar.js"></script> 
+		<link rel="stylesheet" href="./src/styles/style.css" />
+		<script type="module" src="/src/components/site-navbar.js"></script>
 		<script type="module" src="/src/components/site-bottom-bar.js"></script>
 		<script src="https://cdn.tailwindcss.com"></script>
 		<script>
 			tailwind.config = {
-			theme: {
-			extend: {
-			colors: {
-				mustard: "#F6BD60",
-				cream: "#F7EDE2",
-				blush: "#F5CAC3",
-				teal: "#84A59D",
-				coral: "#F28482",
-			},
-			},
-			},
+				theme: {
+					extend: {
+						colors: {
+							mustard: "#F6BD60",
+							cream: "#F7EDE2",
+							blush: "#F5CAC3",
+							teal: "#84A59D",
+							coral: "#F28482",
+						},
+					},
+				},
 			};
 		</script>
-		<script src="./src/taskSave.js" defer></script>
-
+		<script type="module" src="/src/taskSave.js"></script>
+		<script type="module" src="./src/firebaseConfig.js"></script>
 	</head>
 	<body style="background-color: #f7ede2; margin: 0px">
 		<site-navbar></site-navbar>
@@ -48,29 +48,32 @@
 			/></a>
 		</nav>
 		<main>
-			<form id="taskForm" style="
-			display: flex;
-			flex-direction: column;
-			margin: 10px;
-			padding-right: 5%;
-			align-content: space-between;
-			height: 100%;
-			">
+			<form
+				id="taskForm"
+				style="
+					display: flex;
+					flex-direction: column;
+					margin: 10px;
+					padding-right: 5%;
+					align-content: space-between;
+					height: 100%;
+				"
+			>
 				<div class="col">
 					<label for="course">Course Name:</label>
-					<input type="text" id="course" name="course"/>
+					<input type="text" id="course" name="course" />
 				</div>
 				<div class="col">
 					<label for="name">Task Name:</label>
-					<input type="text" id="name" name="name"/>
+					<input type="text" id="name" name="name" />
 				</div>
 				<div class="col">
 					<label for="description">Description:</label>
-					<input type="text" id="description" name="description"/>
+					<input type="text" id="description" name="description" />
 				</div>
 				<div class="col">
 					<label for="date">Due Date:</label>
-					<input type="date" id="date" name="date"/>
+					<input type="date" id="date" name="date" />
 				</div>
 				<div class="col">
 					<label for="priority">Priority:</label>
