@@ -1,9 +1,9 @@
-import { auth, db } from "./firebaseAPIConfig.js";
+import { auth, db } from "/src/firebaseConfig.js";
 import { collection, addDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 
 document
-.getElementById("taskForm")
+	.getElementById("taskForm")
 	.addEventListener("submit", function (event) {
 		event.preventDefault();
 		const newTask = {
