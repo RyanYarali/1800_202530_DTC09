@@ -1,16 +1,28 @@
-document.getElementById("taskForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    const newTask = {
+import { auth, db } from "./firebaseAPIConfig.js";
+import { collection, addDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
+
+document
+.getElementById("taskForm")
+	.addEventListener("submit", function (event) {
+		event.preventDefault();
+		const newTask = {
 			course: document.getElementById("course").value,
 			name: document.getElementById("name").value,
 			description: document.getElementById("description").value,
 			date: document.getElementById("date").value,
 			priority: document.getElementById("priority").value,
 		};
-		let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-		tasks.push(newTask);
-		localStorage.setItem("tasks", JSON.stringify(tasks));
-		console.log("Form saved, redirecting...");
-		window.location.href = "viewTasks.html";
-
-});
+		onAuthStateChanged(auth, async (users) => {
+			if (users) {
+				try {
+					const userTasks = collection(db, "users", users.uid, "tasks");
+					await addDoc(userTasks, newTask);
+					window.location.href = "viewTasks.html";
+					console.log("Task added for user:", users.uid);
+				} catch (error) {
+					console.log(error);
+				}
+			}
+		});
+	});
