@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Group</title>
+    <link rel="stylesheet" href="./src/styles/tasks.css" />
+    <link rel="stylesheet" href="./src/styles/style.css" />
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-bottom-bar.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mustard: "#F9A03F",
+                        cream: "#ffffff",
+                        blush: "#F5CAC3",
+                        teal: "#84A59D",
+                        coral: "#F28482",
+                    },
+                },
+            },
+        };
+    </script>
+    <script type="module" src="/src/groupsSave.js"></script>
+    <script type="module" src="./src/firebaseConfig.js"></script>
+</head>
+
+<body class="page-body" data-page="Create Group">
+    <site-navbar></site-navbar>
+    <main>
+        <form id="groupForm" class="page-form">
+            <div class="col">
+                <label for="name">Group Name</label>
+                <input type="text" id="name" name="name" />
+            </div>
+            <div class="col">
+                <label for="class">Class Name:</label>
+                <input type="class" id="class" name="class" />
+            </div>
+            <div class="col">
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description" />
+            </div>
+            <div class="btn-save"><button type="submit">Save & Continue</button></div>
+        </form>
+    </main>
+
+    <site-bottom-bar></site-bottom-bar>
+</body>
+
+</html>
