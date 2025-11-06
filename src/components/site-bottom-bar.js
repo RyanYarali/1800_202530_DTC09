@@ -1,69 +1,27 @@
 class SiteBottomBar extends HTMLElement {
-    connectedCallback() {
-        this.innerHTML = `
-            <!-- Footer: single source of truth -->
-            <link rel="stylesheet" href="./src/styles/style.css" />
+  connectedCallback() {
+    this.innerHTML = `
+			<!-- Footer: single source of truth -->
+			<link rel="stylesheet" href="./src/styles/style.css" />
 			<footer
-			class="fixed bottom-0 left-0 w-full bg-cream border-t border-gray-300"
+			class="fixed bottom-0 left-0 w-full border-t border-gray-300 mx-auto"
+			style="background-color: rgba(245, 240, 246, 0.95); border-radius: 30px; margin: 1rem; width: calc(100% - 2rem); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: all 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.3);"
 			>
-			<div class="flex justify-between items-center px-6 py-3 relative">
-				<a
-				href="viewTasks.html"
-				class="flex flex-col items-center text-teal hover:text-coral"
-				>
-				
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="32"
-					height="32"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="#84A59D"
-					stroke-width="1"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				>
-					<path
-					d="M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8"
-					/>
-					<path d="M14 19l2 2l4 -4" />
-					<path d="M9 8h4" />
-					<path d="M9 12h2" />
-				</svg>
-
-				<span class="text-xs">Task</span>
-				</a>
-
-				<a
-				href="addTask.html"
-				class="absolute left-1/2 transform -translate-x-1/2 -translate-y-6 bg-coral text-white rounded-full p-4 shadow-lg hover:bg-mustard transition"
-				>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-6 w-6"
-					fill="none"
-					viewBox="0 0 24 24"
-					stroke="currentColor"
-				>
-					<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					d="M12 4v16m8-8H4"
-					/>
-				</svg>
-				</a>
+			<div class="flex justify-between items-center px-9 py-3 relative">
 
 				<a
 				href="main.html"
-				class="flex flex-col items-center text-teal hover:text-coral"
+				class="flex flex-col items-center bg-white shadow-lg rounded-2xl px-4 py-2 "
+				style="color: #230007; "
+				onmouseover="this.style.color='#A40606'"
+				onmouseout="this.style.color='#230007'"
 				>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="h-6 w-6 mb-1"
 					fill="none"
 					viewBox="0 0 24 24"
-					stroke="currentColor"
+					stroke="#230007"
 				>
 					<path
 					stroke-linecap="round"
@@ -73,12 +31,95 @@ class SiteBottomBar extends HTMLElement {
 						0h-4a2 2 0 01-2-2v-6H9v6a2 2 0 01-2 2H3"
 					/>
 				</svg>
-				<span class="text-xs">Home</span>
+				<span class="text-sm">Home</span>
 				</a>
+				<a
+				href="viewTasks.html"
+				class="flex flex-col items-center bg-white shadow-lg rounded-2xl px-4 py-2 "
+				style="color: #230007;"
+				onmouseover="this.style.color='#A40606'"	
+				onmouseout="this.style.color='#230007'"
+				>
+				
+				<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="32"
+    height="32"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#230007"
+    stroke-width="1"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+>
+    <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+    <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2" />
+    <circle cx="12" cy="14" r="3" />
+    <path d="M12 12v2l1.5 1.5" />
+</svg>
+
+				<span class="text-sm">Pending</span>
+				</a>
+								<a
+				href="viewTasks.html"
+				class="flex flex-col items-center bg-white shadow-lg rounded-2xl px-4 py-2 "
+				style="color: #230007;"
+				onmouseover="this.style.color='#A40606'"
+				onmouseout="this.style.color='#230007'"
+				>
+				
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="32"
+    height="32"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#230007"
+    stroke-width="1"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+>
+    <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+    <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2" />
+    <path d="M9 14l2 2l4 -4" />
+</svg>
+
+				<span class="text-sm">Completed</span>
+				</a>
+								<a
+				href="addTask.html"
+				class="flex flex-col items-center bg-white shadow-lg rounded-2xl px-4 py-2 "
+				style="color: #230007;"
+				onmouseover="this.style.color='#A40606'"
+				onmouseout="this.style.color='#230007'"
+				>
+				
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="32"
+    height="32"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#230007"
+    stroke-width="1"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+>
+    <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+    <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2" />
+    <path d="M12 11v6" />
+    <path d="M9 14h6" />
+</svg>
+
+				<span class="text-sm">Add</span>
+				</a>
+
+
+
 			</div>
 			</footer>
-        `;
-    }
+		`;
+  }
 }
 
-customElements.define('site-bottom-bar', SiteBottomBar);
+customElements.define("site-bottom-bar", SiteBottomBar);

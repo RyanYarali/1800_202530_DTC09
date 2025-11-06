@@ -5,59 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tasks</title>
     <link rel="stylesheet" href="./src/styles/tasks.css" />
-		<script type="module" src="/src/components/site-navbar.js"></script> 
-		<script type="module" src="/src/components/site-bottom-bar.js"></script>
-		<script src="https://cdn.tailwindcss.com"></script>
-		<script>
-        tailwind.config = {
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-bottom-bar.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
         theme: {
           extend: {
-          colors: {
-            mustard: "#F6BD60",
-            cream: "#F7EDE2",
-            blush: "#F5CAC3",
-            teal: "#84A59D",
-            coral: "#F28482",
-          },
+            colors: {
+              mustard: "#F9A03F",
+              cream: "#ffffff",
+              blush: "#F5CAC3",
+              teal: "#84A59D",
+              coral: "#F28482",
+            },
           },
         },
-        };
-      </script>
+      };
+    </script>
     <script type="module" src="./src/taskLoad.js" defer></script>
   </head>
-  <body style="background-color: #f7ede2; margin: 0px">
-    <!-- <site-navbar></site-navbar> -->
-    <nav
-      style="
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #f6bd60;
-      "
-    >
-      <h1 style="margin: 10px">TaskMate</h1>
-      <h1>All Tasks</h1>
-      <a href="login.html"
-        ><img
-          src="
-            https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?20170328184010
-            "
-          style="width: 42px; border-radius: 50px; margin: 10px"
-      /></a>
-    </nav>
-    <main style="display: grid">
+  <body class="page-body" data-page="All Tasks">
+    <site-navbar></site-navbar>
+    <main class="page-main">
       <div style="margin: 10px">Filter</div>
-      <div
-        id="events-container"
-        style="
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-          margin: 16px;
-          justify-content: space-between;
-          height: 80%;
-        "
-      ></div>
+      <div id="events-container" class="events-container"></div>
     </main>
 
     <site-bottom-bar></site-bottom-bar>

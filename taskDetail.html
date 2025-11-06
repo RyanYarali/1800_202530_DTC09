@@ -1,92 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Add Task</title>
-		<link rel="stylesheet" href="./src/styles/tasks.css" />
-		<script type="module" src="/src/components/site-navbar.js"></script> 
-		<script type="module" src="/src/components/site-bottom-bar.js"></script>
-		<script src="https://cdn.tailwindcss.com"></script>
-		<script>
-			tailwind.config = {
-			theme: {
-				extend: {
-				colors: {
-					mustard: "#F6BD60",
-					cream: "#F7EDE2",
-					blush: "#F5CAC3",
-					teal: "#84A59D",
-					coral: "#F28482",
-				},
-				},
-			},
-			};
-        </script>
-		<script type="module" src="./src/taskEdit.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Task</title>
+    <link rel="stylesheet" href="./src/styles/tasks.css" />
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-bottom-bar.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              mustard: "#F9A03F",
+              cream: "#ffffff",
+              blush: "#F5CAC3",
+              teal: "#84A59D",
+              coral: "#F28482",
+            },
+          },
+        },
+      };
+    </script>
+    <script type="module" src="./src/taskEdit.js"></script>
+  </head>
+  <body class="page-body" data-page="Task Detail">
+    <site-navbar></site-navbar>
 
+    <main>
+      <form id="editForm" class="page-form">
+        <div class="col">
+          <label for="course">Course Name:</label>
+          <input type="text" id="course" name="course" />
+        </div>
+        <div class="col">
+          <label for="name">Task Name:</label>
+          <input type="text" id="name" name="name" />
+        </div>
+        <div class="col">
+          <label for="description">Description:</label>
+          <input type="text" id="description" name="description" />
+        </div>
+        <div class="col">
+          <label for="date">Due Date:</label>
+          <input type="date" id="date" name="date" />
+        </div>
+        <div class="col">
+          <label for="priority">Priority:</label>
+          <select name="priority" id="priority">
+            <option value="value1">Low</option>
+            <option value="value2">Medium</option>
+            <option value="value3">High</option>
+          </select>
+        </div>
+        <div class="btn-save"><button type="submit">Save Changes</button>
+        <button type="button" id="delete" style="margin-top: 5px">
+          Delete Task
+        </button></div>
+      </form>
+    </main>
 
-
-
-	</head>
-	<body style="background-color: #f7ede2; margin: 0px">
-		<!-- <site-navbar></site-navbar> -->
-		<nav
-			style="
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				background-color: #f6bd60;
-			"
-		>
-			<h1 style="margin: 10px">TaskMate</h1>
-			<h1>Task Detail</h1>
-			<a href="#"
-				><img
-					src="
-            https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png?20170328184010
-            "
-					style="width: 42px; border-radius: 50px; margin: 10px"
-			/></a>
-		</nav>
-		<main>
-			<form id="editForm" style="
-			display: flex;
-			flex-direction: column;
-			margin: 10px;
-			padding-right: 5%;
-			align-content: space-between;
-			height: 100%;
-			">
-				<div class="col">
-					<label for="course">Course Name:</label>
-					<input type="text" id="course" name="course"/>
-				</div>
-				<div class="col">
-					<label for="name">Task Name:</label>
-					<input type="text" id="name" name="name"/>
-				</div>
-				<div class="col">
-					<label for="description">Description:</label>
-					<input type="text" id="description" name="description"/>
-				</div>
-				<div class="col">
-					<label for="date">Due Date:</label>
-					<input type="date" id="date" name="date"/>
-				</div>
-				<div class="col">
-					<label for="priority">Priority:</label>
-					<select name="priority" id="priority">
-						<option value="value1">Low</option>
-						<option value="value2">Medium</option>
-						<option value="value3">High</option>
-					</select>
-				</div>
-				<button type="submit">Save Changes</button>
-                <button type="button" id="delete" style="margin-top: 5px;">Delete Task</button>
-			</form>
-		</main>
-
-		<site-bottom-bar></site-bottom-bar>
-	</body>
+    <site-bottom-bar></site-bottom-bar>
+  </body>
 </html>

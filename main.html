@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome | TaskMate</title>
     <link rel="stylesheet" href="./src/styles/style.css" />
-		<script type="module" src="/src/components/site-navbar.js"></script> 
-		<!-- <script type="module" src="/src/components/site-footer.js"></script> -->
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <!-- <script type="module" src="/src/components/site-footer.js"></script> -->
     <script type="module" src="/src/components/site-bottom-bar.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -14,8 +14,8 @@
         theme: {
           extend: {
             colors: {
-              mustard: "#F6BD60",
-              cream: "#F7EDE2",
+              mustard: "#F9A03F",
+              cream: "#ffffff",
               blush: "#F5CAC3",
               teal: "#84A59D",
               coral: "#F28482",
@@ -26,20 +26,45 @@
     </script>
   </head>
 
-  <body class="bg-cream flex flex-col min-h-screen">
+  <body
+    class="bg-gradient-to-b from-cream to-blush/20 flex flex-col min-h-screen"
+    data-show-toggle="true"
+  >
     <!-- our own navbar goes here -->
     <site-navbar></site-navbar>
-  
-    <main class="flex-grow flex items-center justify-center text-center px-6">
-      <div class="max-w-2xl">
-        <h2 class="text-4xl font-extrabold text-teal mb-4">
-          Take Control of Your Time
-        </h2>
-        <p class="text-lg text-gray-700 mb-8">
-          Stay focused, Stay productive <br />
-          One task at a time.
-        </p>
 
+    <main class="flex-grow flex items-center justify-center text-center px-6">
+      <div
+        class="max-w-2xl p-8 bg-white/80 backdrop-blur-md rounded-[30px] shadow-lg border border-white/20 transform hover:scale-[1.02] transition-all duration-300"
+      >
+        <div
+          class="bg-[#230007]/10 rounded-[20px] p-6 mb-6 shadow-xl border border-[#230007]/520 backdrop-blur-sm"
+        >
+          <h2 class="text-4xl font-extrabold text-[#230007] mb-4">
+            Take Control of Your Time
+          </h2>
+        </div>
+
+        <div
+          class="bg-gray-50/50 rounded-[20px] p-6 shadow-sm border border-gray-200/20 backdrop-blur-sm"
+        >
+          <p class="text-lg text-gray-700 mb-4">
+            Stay focused, Stay productive
+          </p>
+          <p class="text-lg text-gray-700">One task at a time.</p>
+        </div>
+
+        <div class="mt-8 flex gap-4 justify-center">
+           
+           
+         <a href="addTask.html">
+
+           <button
+           class="px-8 py-3 bg-[#A40606] text-white rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-white/20 backdrop-blur-sm"           >
+           Add New Task
+          </button>
+        </a>
+        </div>
       </div>
     </main>
 
