@@ -16,18 +16,6 @@ class SiteFooter extends HTMLElement {
 					<a href="#">Conatct Us</a>
 				</div>
 
-				<div class="footer-social">
-					<a href="#"
-						><img
-							src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
-							alt="Facebook"
-					/></a>
-					<a href="#"
-						><img
-							src="https://cdn-icons-png.flaticon.com/512/733/733558.png"
-							alt="Instagram"
-					/></a>
-				</div>
 			</div>
 
 			<div class="footer-bottom">
