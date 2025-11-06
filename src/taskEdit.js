@@ -1,30 +1,74 @@
-const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-const index = localStorage.getItem("editIndex");
+// taskEdit.js
+import { auth, db } from "/src/firebaseConfig.js";
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
 
-document.getElementById("course").value = tasks[index].course;
-document.getElementById("name").value = tasks[index].name;
-document.getElementById("description").value = tasks[index].description;
-document.getElementById("date").value = tasks[index].date;
-document.getElementById("priority").value = tasks[index].priority;
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("editForm");
+  const deleteBtn = document.getElementById("delete");
 
-document.getElementById("editForm").addEventListener("submit", function(edit) {
-	edit.preventDefault();
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      console.error("No user logged in");
+      window.location.href = "login.html";
+      return;
+    }
 
-	tasks[index] = {
-		course: document.getElementById("course").value,
-		name: document.getElementById("name").value,
-		description: document.getElementById("description").value,
-		date: document.getElementById("date").value,
-		priority: document.getElementById("priority").value,
-	};
+    const taskId = localStorage.getItem("selectedTaskId");
+    if (!taskId) {
+      console.error("No task selected");
+      window.location.href = "viewTasks.html";
+      return;
+    }
 
-	localStorage.setItem("tasks", JSON.stringify(tasks));
-	window.location.href = "viewTasks.html"; 
+    const taskRef = doc(db, "users", user.uid, "tasks", taskId);
+
+    // Load task into form
+    try {
+      const snap = await getDoc(taskRef);
+      if (snap.exists()) {
+        const task = snap.data();
+        document.getElementById("course").value = task.course || "";
+        document.getElementById("name").value = task.name || "";
+        document.getElementById("description").value = task.description || "";
+        document.getElementById("date").value = task.date || "";
+        document.getElementById("priority").value = task.priority || "Medium";
+      } else {
+        console.error("Task not found");
+        window.location.href = "viewTasks.html";
+      }
+    } catch (err) {
+      console.error("Error loading task:", err);
+    }
+
+    // Save changes
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      try {
+        await updateDoc(taskRef, {
+          course: document.getElementById("course").value,
+          name: document.getElementById("name").value,
+          description: document.getElementById("description").value,
+          date: document.getElementById("date").value,
+          priority: document.getElementById("priority").value,
+        });
+        window.location.href = "viewTasks.html";
+      } catch (err) {
+        console.error("Error updating task:", err);
+        alert("Failed to update task");
+      }
+    });
+
+    // Delete task
+    deleteBtn.addEventListener("click", async () => {
+      if (!confirm("Are you sure you want to delete this task?")) return;
+      try {
+        await deleteDoc(taskRef);
+        window.location.href = "viewTasks.html";
+      } catch (err) {
+        console.error("Error deleting task:", err);
+        alert("Failed to delete task");
+      }
+    });
+  });
 });
-
-document.getElementById("delete").addEventListener("click", function() {
-    tasks.splice(index, 1);
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-    window.location.href = "viewTasks.html";
-});
-

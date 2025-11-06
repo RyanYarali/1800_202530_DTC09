@@ -1,77 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>My BCIT Project</title>
-		<meta name="comp1800 template" content="My 1800 App" />
+  <head>
+    <title>My BCIT Project</title>
+    <meta name="comp1800 template" content="My 1800 App" />
 
-		<!-- Required meta tags -->
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<!-- Other libraries go here -->
+    <!-- Other libraries go here -->
 
-		<!-- Link to styles of your own -->
-		<link rel="stylesheet" href="./src/styles/style.css" />
-		<script type="module" src="/src/components/site-navbar.js"></script> 
-		<script type="module" src="/src/components/site-footer.js"></script>
-	</head>
+    <!-- Link to styles of your own -->
+    <link rel="stylesheet" href="./src/styles/style.css" />
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-footer.js"></script>
+  </head>
 
-	<body>
-		<!-- Your HTML Layout go here -->
-		<!-- our own navbar goes here -->
-    	<site-navbar></site-navbar>
+  <body data-show-toggle="true">
+    <!-- Your HTML Layout go here -->
+    <!-- our own navbar goes here -->
+    <site-navbar></site-navbar>
 
-		<!-- Main content goes here -->
-    	<!-- This is the welcome on the landing page, with a login/signup button -->
-		<section class="hero-section">
-			<div class="background" style="height: 200px">
-				<div
-					style="
-						display: flex;
-						position: absolute;
-						width: 100%;
-						flex-direction: column;
-						justify-content: center;
-						color: #f6bd60;
-					"
-				>
-					<h1 style="filter: drop-shadow(0 0 1px black)">
-						Want To Take Control Of Your Time?
-					</h1>
-					<p style="filter: drop-shadow(0 0 1px black)">
-						TaskMate is here for you.
-					</p>
-				</div>
-				<div
-					style="
-						display: flex;
-						position: absolute;
-						width: 100%;
-						bottom: 10%;
-						flex-direction: row;
-						justify-content: space-evenly;
-					"
-				>
-					<button onclick="window.location.href='login.html'" type="button" class="cta-btn">Sign Up</button>
-					<button onclick="window.location.href='login.html'" type="button" class="cta-btn">Log in</button>
-				</div>
-			</div>
-		</section>
+    <!-- Main content goes here -->
+    <!-- This is the welcome on the landing page, with a login/signup button -->
+    <section class="hero-section">
+      <div class="background">
+        <div class="hero-content">
+          <h1>Want To Take Control Of Your Time?</h1>
+          <p>TaskMate is here for you.</p>
+          <div class="hero-actions">
+            <button
+              onclick="window.location.href='login.html'"
+              type="button"
+              class="cta-btn"
+            >
+              Sign Up
+            </button>
+            <button
+              onclick="window.location.href='login.html'"
+              type="button"
+              class="cta-btn"
+            >
+              Log in
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
 
-		<section class="cta-section">
-			<h2>Ready to stay ahead of time?</h2>
-			<p>Learn About TaskMate Today.</p>
-			<button class="cta-btn">Learn More</button>
-		</section>
+    <img
+      src="./images/down.png"
+      class="down-arow">
+    <section class="cta-section">
+      <h2>Ready to stay ahead of time?</h2>
+      <p>Learn About TaskMate Today.</p>
+      <button class="cta-btn">Learn More</button>
+    </section>
 
-		<!-- our own footer goes here -->
-    	<site-footer></site-footer>
+    <!-- our own footer goes here -->
+    <site-footer></site-footer>
 
-		<!---------------------------------------------->
-		<!-- Your own JavaScript functions go here    -->
-		<!---------------------------------------------->
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
 
-		<!-- Link to scripts of your own -->
-		<!-- <script type="module" src="./src/main.js"></script> -->
-	</body>
+    <!-- Link to scripts of your own -->
+    <!-- <script type="module" src="./src/main.js"></script> -->
+  </body>
 </html>

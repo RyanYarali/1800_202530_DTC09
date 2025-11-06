@@ -1,9 +1,9 @@
 :root {
   --accent-color: #f28482;
-  --base-color: #f7ede2;
+  --base-color: #ffffff;
   --text-color: #2e2e2e;
   --input-color: #f5cac3;
-  --background-color:#84a59d;
+  --background-color: #84a59d;
 }
 
 * {
@@ -11,8 +11,11 @@
   padding: 0;
 }
 
+/* Import Maven Pro font from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap");
+
 html {
-  font-family: Poppins, "Segoe UI", sans-serif;
+  font-family: "Maven Pro", sans-serif;
   font-size: 12pt;
   color: var(--text-color);
   text-align: center;
@@ -20,21 +23,19 @@ html {
 
 body {
   min-height: 100vh;
-  background-color: var(--background-color); 
+  background-color: var(--background-color);
+  margin: 0;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  flex-direction: row-reverse;
-  gap: 2rem;
 }
 
 .wrapper {
-  flex: 0 0 40%;
   box-sizing: border-box;
   background-color: var(--base-color);
-  height: 100vh;
-  width: max(40%, 600px);
-  padding: 10px;
+  min-height: 60vh;
+  width: min(720px, 95%);
+  padding: 1rem 1.25rem;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -78,12 +79,13 @@ form label {
   width: 50px;
   background-color: var(--accent-color);
   fill: var(--base-color);
-  border-radius: 10px 0 0 10px;
+  border-radius: 25px 0 0 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
   font-weight: 500;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 form input {
@@ -93,11 +95,12 @@ form input {
   height: 50px;
   padding: 1em;
   font: inherit;
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 25px 25px 0;
   border: 2px solid var(--input-color);
   border-left: none;
   background-color: var(--input-color);
-  transition: 150ms ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 form input:hover {
@@ -152,10 +155,10 @@ a:hover {
 @media (min-width: 1200px) {
   .wrapper {
     width: 40%;
+    min-width: 520px;
     border-radius: 20px;
   }
 }
-
 
 @media (max-width: 1199px) and (min-width: 768px) {
   body {
@@ -177,7 +180,6 @@ a:hover {
   }
 }
 
-
 @media (max-width: 767px) {
   body {
     background-size: contain;
@@ -185,17 +187,15 @@ a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
   }
 
-  .slogan{
+  .slogan {
     display: none;
   }
 
-  .app-name{
+  .app-name {
     display: block;
     font-size: 3rem;
-
   }
 
   .wrapper {
@@ -228,9 +228,7 @@ a:hover {
   }
 }
 
-
 form div.incorrect label {
-
   background-color: #f06272;
 }
 
@@ -238,6 +236,6 @@ form div.incorrect input {
   background-color: #f06272;
 }
 
-#error-message{
-    color: #f06272;
+#error-message {
+  color: #f06272;
 }
