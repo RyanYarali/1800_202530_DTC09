@@ -56,9 +56,9 @@ class SiteNavbar extends HTMLElement {
 
         <div class="navbar-links" id="navbarLinks" style="display:none;">
           <!-- <a href="#">Home</a> -->
-          <a href="#">Review</a>
-          <a href="#">FAQ</a>
-          <a href="#">About Us</a>
+          <a href="review.html">Review</a>
+          <a href="faq.html">FAQ</a>
+          <a href="aboutUs.html">About Us</a>
         </div>
       </nav>
     `;
