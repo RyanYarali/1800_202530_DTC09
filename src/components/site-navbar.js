@@ -55,7 +55,7 @@ class SiteNavbar extends HTMLElement {
         <div id="authControls" class="auth-controls"></div>
 
         <div class="navbar-links" id="navbarLinks" style="display:none;">
-          <a href="#">Home</a>
+          <!-- <a href="#">Home</a> -->
           <a href="#">Review</a>
           <a href="#">FAQ</a>
           <a href="#">About Us</a>
