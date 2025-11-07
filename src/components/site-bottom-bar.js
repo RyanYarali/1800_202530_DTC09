@@ -5,13 +5,13 @@ class SiteBottomBar extends HTMLElement {
 			<link rel="stylesheet" href="./src/styles/style.css" />
 			<footer
 			class="fixed bottom-0 left-0 w-full border-t border-gray-300 mx-auto"
-			style="background-color: rgba(245, 240, 246, 0.95); border-radius: 30px; margin: 1rem; width: calc(100% - 2rem); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: all 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.3);"
+			style="background-color: rgba(245, 240, 246, 0.95); border-radius: 30px; margin: 1rem; width: calc(100% - 2rem); box-shadow: 0 20px 20px rgba(0, 0, 0, 0.15); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: all 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.3);"
 			>
 			<div class="flex justify-between items-center px-9 py-3 relative">
 
 				<a
 				href="main.html"
-				class="flex flex-col items-center bg-white shadow-lg rounded-2xl px-4 py-2 "
+				class="flex flex-col items-center    "
 				style="color: #230007; "
 				onmouseover="this.style.color='#A40606'"
 				onmouseout="this.style.color='#230007'"
@@ -35,7 +35,7 @@ class SiteBottomBar extends HTMLElement {
 				</a>
 				<a
 				href="viewTasks.html"
-				class="flex flex-col items-center bg-white shadow-lg rounded-2xl px-4 py-2 "
+				class="flex flex-col items-center    "
 				style="color: #230007;"
 				onmouseover="this.style.color='#A40606'"	
 				onmouseout="this.style.color='#230007'"
@@ -62,7 +62,7 @@ class SiteBottomBar extends HTMLElement {
 				</a>
 								<a
 				href="viewTasks.html"
-				class="flex flex-col items-center bg-white shadow-lg rounded-2xl px-4 py-2 "
+				class="flex flex-col items-center    "
 				style="color: #230007;"
 				onmouseover="this.style.color='#A40606'"
 				onmouseout="this.style.color='#230007'"
@@ -88,7 +88,7 @@ class SiteBottomBar extends HTMLElement {
 				</a>
 								<a
 				href="addTask.html"
-				class="flex flex-col items-center bg-white shadow-lg rounded-2xl px-4 py-2 "
+				class="flex flex-col items-center    "
 				style="color: #230007;"
 				onmouseover="this.style.color='#A40606'"
 				onmouseout="this.style.color='#230007'"
