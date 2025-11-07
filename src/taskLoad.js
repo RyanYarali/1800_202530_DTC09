@@ -38,7 +38,7 @@ onAuthReady(async (user) => {
   querySnapshotDocs.forEach((doc) => {
     const task = doc.data();
     const card = document.createElement("div");
-    card.classList.add("card");
+  
     
     card.innerHTML = `
       <div class="col">
