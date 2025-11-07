@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Groups</title>
+    <link rel="stylesheet" href="./src/styles/tasks.css" />
+    <link rel="stylesheet" href="./src/styles/style.css" />
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-bottom-bar.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mustard: "#F9A03F",
+                        cream: "#ffffff",
+                        blush: "#F5CAC3",
+                        teal: "#84A59D",
+                        coral: "#F28482",
+                    },
+                },
+            },
+        };
+    </script>
+    <script type="module" src="./src/groups/groupsLoad.js" defer></script>
+</head>
+
+<body class="page-body" data-page="All Tasks">
+    <site-navbar></site-navbar>
+    <main class="page-main">
+        <div>
+            <div class="container"><button type="add">Add a Group</button></div>
+            <div class="container"><button type="create"><a href="groupCreate.html">Create a Group</a></button></div>
+        </div>
+        <div id="groups-container" class="events-container"></div>
+        </div>
+    </main>
+
+    <site-bottom-bar></site-bottom-bar>
+</body>
+
+</html>

@@ -23,42 +23,32 @@
         },
       };
     </script>
-    <script type="module" src="./src/taskEdit.js"></script>
+    <script type="module" src="./src/groups/groupsEdit.js"></script>
   </head>
-  <body class="page-body" data-page="Task Detail">
+  <body class="page-body" data-page="Group Details">
     <site-navbar></site-navbar>
 
     <main>
       <form id="editForm" class="page-form">
         <div class="col">
-          <label for="course">Course Name:</label>
-          <input type="text" id="course" name="course" />
+          <label for="name">Group Name:</label>
+          <input type="text" id="name" name="name" />
         </div>
         <div class="col">
-          <label for="name">Task Name:</label>
-          <input type="text" id="name" name="name" />
+          <label for="course">Course Name:</label>
+          <input type="text" id="course" name="course" />
         </div>
         <div class="col">
           <label for="description">Description:</label>
           <input type="text" id="description" name="description" />
         </div>
-        <div class="col">
-          <label for="date">Due Date:</label>
-          <input type="date" id="date" name="date" />
         </div>
-        <div class="col">
-          <label for="priority">Priority:</label>
-          <select name="priority" id="priority">
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-          </select>
-        </div>
-        <div class="btn-save"><button type="submit">Save Changes</button>
-        <button type="button" id="delete" style="margin-top: 5px">
-          Delete Task
-        </button></div>
+        <div class="btn-save">
+        <button type="submit">Save Changes</button>
+        <button type="button" id="delete" style="margin-top: 5px">Delete Group</button>
+      </div>
       </form>
+
     </main>
 
     <site-bottom-bar></site-bottom-bar>
