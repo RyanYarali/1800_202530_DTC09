@@ -1,11 +1,11 @@
 // Import helper to run code only after Firebase Authentication is ready
-import { onAuthReady } from "./authentication.js";
+import { onAuthReady } from "../authentication.js";
 
 // Import Firestore functions for reading data
 import { collection, getDocs } from "firebase/firestore";
 
 // Import initialized Firestore database instance
-import { db } from "./firebaseConfig.js";
+import { db } from "../firebaseConfig.js";
 
 // Run this code when Firebase Auth is ready and a user state is known
 onAuthReady(async (user) => {
@@ -36,7 +36,7 @@ onAuthReady(async (user) => {
     
     card.innerHTML = `
       <div class="col">
-        <h2>Due: ${task.name || "No group name"}</h2>
+        <h2>${task.name || "No group name"}</h2>
         <div class="card">
           <p>${task.course || "No course"}</p>
           <p>${task.name || "Untitled task"}</p>
@@ -47,8 +47,8 @@ onAuthReady(async (user) => {
     // When the card is clicked:
     // - Redirect the user to the task detail page
     card.addEventListener("click", () => {
-      localStorage.setItem("selectedTaskId", doc.id);
-      window.location.href = "taskDetail.html";
+      localStorage.setItem("selectedGroupID", doc.id);
+      window.location.href = "groupTasks.html";
     });
 
     // Add the completed card to the container in the web page

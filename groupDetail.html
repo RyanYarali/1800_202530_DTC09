@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Task</title>
+    <title>Edit Task</title>
     <link rel="stylesheet" href="./src/styles/tasks.css" />
-    <link rel="stylesheet" href="./src/styles/style.css" />
     <script type="module" src="/src/components/site-navbar.js"></script>
     <script type="module" src="/src/components/site-bottom-bar.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,39 +23,32 @@
         },
       };
     </script>
-    <script type="module" src="/src/taskSave.js"></script>
-    <script type="module" src="./src/firebaseConfig.js"></script>
+    <script type="module" src="./src/groups/groupsEdit.js"></script>
   </head>
-  <body class="page-body" data-page="Add Task">
+  <body class="page-body" data-page="Group Details">
     <site-navbar></site-navbar>
+
     <main>
-      <form id="taskForm" class="page-form">
+      <form id="editForm" class="page-form">
+        <div class="col">
+          <label for="name">Group Name:</label>
+          <input type="text" id="name" name="name" />
+        </div>
         <div class="col">
           <label for="course">Course Name:</label>
           <input type="text" id="course" name="course" />
         </div>
         <div class="col">
-          <label for="name">Task Name:</label>
-          <input type="text" id="name" name="name" />
-        </div>
-        <div class="col">
           <label for="description">Description:</label>
           <input type="text" id="description" name="description" />
         </div>
-        <div class="col">
-          <label for="date">Due Date:</label>
-          <input type="date" id="date" name="date" />
         </div>
-        <div class="col">
-          <label for="priority">Priority:</label>
-          <select name="priority" id="priority">
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-          </select>
-        </div>
-        <div class="btn-save"><button type="submit">Save & Continue</button></div>
+        <div class="btn-save">
+        <button type="submit">Save Changes</button>
+        <button type="button" id="delete" style="margin-top: 5px">Delete Group</button>
+      </div>
       </form>
+
     </main>
 
     <site-bottom-bar></site-bottom-bar>

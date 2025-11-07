@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Web Components for shared navbar and footer layout -->
+    <link rel="stylesheet" href="./src/styles/style.css" />
     <script type="module" src="/src/components/site-navbar.js"></script> 
     <script type="module" src="/src/components/site-footer.js"></script>
 </head>
@@ -34,7 +35,7 @@
                 <div class="mb-3">
                     <input type="password" id="loginPassword" class="form-control" placeholder="Password" required />
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Login</button>
+                <button type="submit" class="btn btn-danger w-100">Login</button>
             </form>
             <small class="d-block mt-3 text-center">
                 Don’t have an account?
@@ -71,7 +72,7 @@
     <!---------------------------------------------->
     <!-- Your own JavaScript scripts go here      -->
     <!---------------------------------------------->
-    <script type="module" src="/src/firebaseConfig.js"></script>
+    <script type="module" src="/src/firebaseConfig.js"></>
     <script type="module" src="/src/authentication.js"></script>
     <script type="module" src="/src/loginSignup.js"></script>
     <script type="module" src="/src/app.js"></script>
