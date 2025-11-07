@@ -55,10 +55,10 @@ class SiteNavbar extends HTMLElement {
         <div id="authControls" class="auth-controls"></div>
 
         <div class="navbar-links" id="navbarLinks" style="display:none;">
-          <a href="#">Home</a>
-          <a href="#">Review</a>
-          <a href="#">FAQ</a>
-          <a href="#">About Us</a>
+          <!-- <a href="#">Home</a> -->
+          <a href="review.html">Review</a>
+          <a href="faq.html">FAQ</a>
+          <a href="aboutUs.html">About Us</a>
         </div>
       </nav>
     `;
@@ -103,6 +103,7 @@ class SiteNavbar extends HTMLElement {
 
     // Custom SVG profile icon
     const profileIconSVG = `
+    <a  href="profile.html">
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width: 40px; height: 40px; display: block;">
         <defs>
           <linearGradient id="profileGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -122,6 +123,7 @@ class SiteNavbar extends HTMLElement {
         <path d="M 28 75 Q 28 58 50 58 Q 72 58 72 75 L 72 85 Q 72 90 50 90 Q 28 90 28 85 Z" 
               fill="#F5F0F6"/>
       </svg>
+      </a>
     `;
 
 
