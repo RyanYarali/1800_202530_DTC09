@@ -41,21 +41,21 @@ onAuthReady(async (user) => {
         card.classList.add("card");
 
         card.innerHTML = `
-      <div class="col">
+    <div class="col">
         <h2>Due: ${task.date || "No due date"}</h2>
         <div class="card">
-          <p>${task.course || "No course"}</p>
-          <p>${task.name || "Untitled task"}</p>
-          <p>${task.priority || "Normal"}</p>
+            <p>${task.course || "No course"}</p>
+            <p>${task.name || "Untitled task"}</p>
+            <p>${task.priority || "Normal"}</p>
         </div>
-      </div>
+    </div>
     `;
 
         // When the card is clicked:
         // - Redirect the user to the task detail page
         card.addEventListener("click", () => {
             localStorage.setItem("selectedTaskId", doc.id);
-            window.location.href = "taskDetail.html";
+            window.location.href = "taskDetailGroup.html";
         });
 
         // Add the completed card to the container in the web page
