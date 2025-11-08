@@ -52,7 +52,7 @@ class SiteNavbar extends HTMLElement {
           <span class="nav-placeholder" aria-hidden="true"></span>
         </div>
 
-        <div id="authControls" class="auth-controls"></div>
+        <div id="authControls" class="auth-controls" style="width: 40px; height: 40px;"></div>
 
         <div class="navbar-links" id="navbarLinks" style="display:none;">
           <!-- <a href="#">Home</a> -->
@@ -88,9 +88,14 @@ class SiteNavbar extends HTMLElement {
       if (brand) brand.style.display = "none";
     }
 
-    // Show toggle only on pages that opt-in: <body data-show-toggle="true">
+    // Show toggle on pages that opt-in OR on login/signup/profile pages
     const showToggle = document.body?.dataset?.showToggle === "true";
-    if (!showToggle && toggle) toggle.style.display = "none";
+    const currentPage = window.location.pathname.split("/").pop().toLowerCase();
+    const alwaysShowTogglePages = ["login.html", "profile.html"];
+    const shouldShowToggle =
+      showToggle || alwaysShowTogglePages.includes(currentPage);
+
+    if (!shouldShowToggle && toggle) toggle.style.display = "none";
 
     // Wire up toggle to show navbar-links (mobile menu)
     if (toggle && links) {
@@ -103,7 +108,7 @@ class SiteNavbar extends HTMLElement {
 
     // Custom SVG profile icon
     const profileIconSVG = `
-    <a  href="profile.html">
+    <a href="profile.html">
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width: 40px; height: 40px; display: block;">
         <defs>
           <linearGradient id="profileGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -123,19 +128,22 @@ class SiteNavbar extends HTMLElement {
         <path d="M 28 75 Q 28 58 50 58 Q 72 58 72 75 L 72 85 Q 72 90 50 90 Q 28 90 28 85 Z" 
               fill="#F5F0F6"/>
       </svg>
-      </a>
+    </a>
     `;
 
+    // Start with empty state (no profile icon shown by default)
+    authControls.innerHTML = "";
 
     // Use Firebase auth to update avatar destination
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // show profile (link to main/profile page)
-        authControls.innerHTML = `<a class="profile-link" href="#" title="${
+        // Show profile icon (link to profile page)
+        authControls.innerHTML = `<div class="profile-link" title="${
           (user.displayName || user.email) ?? "Profile"
-        }">${profileIconSVG}</a>`;
+        }">${profileIconSVG}</div>`;
       } else {
-        authControls.innerHTML = `<a class="profile-link" href="#" title="Login">${profileIconSVG}</a>`;
+        // Don't show profile icon, but maintain the space
+        authControls.innerHTML = "";
       }
     });
   }
