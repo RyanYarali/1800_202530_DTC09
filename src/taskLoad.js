@@ -34,31 +34,69 @@ onAuthReady(async (user) => {
     return dateA - dateB
   });
 
-  // Loop through each task and create a visual card for it
-  querySnapshotDocs.forEach((doc) => {
-    const task = doc.data();
-    const card = document.createElement("div");
+// Group tasks by date first
+const tasksByDate = {};
+querySnapshotDocs.forEach((doc) => {
+  const task = doc.data();
+  const date = task.date || "No due date";
   
-    
-    card.innerHTML = `
-      <div class="col">
-        <h2>Due: ${task.date || "No due date"}</h2>
-        <div class="card">
-          <p>${task.course || "No course"}</p>
-          <p>${task.name || "Untitled task"}</p>
-          <p>${task.priority || "Normal"}</p>
-        </div>
-      </div>
-    `;
+  if (!tasksByDate[date]) {
+    tasksByDate[date] = [];
+  }
+  
+  tasksByDate[date].push({ id: doc.id, ...task });
+});
 
+// Loop through each date group and create visual cards
+Object.keys(tasksByDate).forEach((date) => {
+  // Create date header (only once per date)
+  const dateHeader = document.createElement("h2");
+  dateHeader.textContent = `Due: ${date}`;
+  container.appendChild(dateHeader);
+
+  // Create cards for all tasks under this date
+  tasksByDate[date].forEach((task) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <p>${task.course || "No course"}</p>
+      <p>${task.name || "Untitled task"}</p>
+      <p>${task.priority || "Normal"}</p>
+    `;
+    
     // When the card is clicked:
     // - Redirect the user to the task detail page
     card.addEventListener("click", () => {
-      localStorage.setItem("selectedTaskId", doc.id);
+      localStorage.setItem("selectedTaskId", task.id);
       window.location.href = "taskDetail.html";
     });
-
+    
     // Add the completed card to the container in the web page
     container.appendChild(card);
   });
 });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
