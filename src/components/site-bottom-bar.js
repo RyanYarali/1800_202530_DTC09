@@ -90,7 +90,7 @@ class SiteBottomBar extends HTMLElement {
 				<span class="text-sm">Groups</span>
 				</a>
 								<a
-				href="viewTasks.html"
+				href="completedTask.html"
 				class="flex flex-col items-center    "
 				style="color: #230007;"
 				onmouseover="this.style.color='#A40606'"
