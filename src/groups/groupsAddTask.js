@@ -20,21 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const tasksCollectionRef = collection(db, `users/${user.uid}/tasks`);
         const querySnapshot = await getDocs(tasksCollectionRef);
 
-        for (const doc of querySnapshot.docs) {
-            const taskData = doc.data();
-            const taskOption = document.createElement("option");
-            taskOption.value = doc.id;
-            taskOption.textContent = taskData.name || "Unnamed Task";
-            container.appendChild(taskOption);
-        }
-
-        let taskRef = null;
-
-        container.addEventListener("change", async (event) => {
-            event.preventDefault();
-            const taskID = event.target.value;
-            taskRef = doc(db, `users/${user.uid}/tasks/${taskID}`);
-
+        // Helper to load a task into the form by ID
+        async function loadTaskById(taskID) {
+            if (!taskID) return;
+            const taskRef = doc(db, `users/${user.uid}/tasks/${taskID}`);
             try {
                 const snap = await getDoc(taskRef);
                 if (snap.exists()) {
@@ -51,33 +40,52 @@ document.addEventListener("DOMContentLoaded", () => {
             } catch (err) {
                 console.error("Error loading task:", err);
             }
-        });
+        }
 
-        form.addEventListener("submit", async (e) => {
+        for (const taskDoc of querySnapshot.docs) {
+            const taskData = taskDoc.data();
+            const taskOption = document.createElement("option");
+            taskOption.value = taskDoc.id;
+            taskOption.textContent = taskData.name || "Unnamed Task";
+            container.appendChild(taskOption);
+        }
+
+        // If there are tasks, select the first and load it immediately
+        if (container.options.length > 0) {
+            container.value = container.options[0].value;
+            await loadTaskById(container.value);
+        }
+
+        container.addEventListener("change", async (event) => {
             event.preventDefault();
-                    const newTask = {
-                        course: document.getElementById("course").value,
-                        name: document.getElementById("name").value,
-                        description: document.getElementById("description").value,
-                        date: document.getElementById("date").value,
-                        priority: document.getElementById("priority").value,
-                    };
-                    onAuthStateChanged(auth, async (users) => {
-                        if (users) {
-                            try {
-                                const GroupID = localStorage.getItem("selectedGroupID");
-                                const userTasks = collection(db, "groups", GroupID, "tasks");
-                                await addDoc(userTasks, newTask);
-                                window.location.href = "groupTasks.html";
-                                console.log("Task added for user:", users.uid);
-                            } catch (error) {
-                                console.log(error);
-                            }
-                        }
-                    })
+            const taskID = event.target.value;
+            await loadTaskById(taskID);
         });
 
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const newTask = {
+                course: document.getElementById("course").value,
+                name: document.getElementById("name").value,
+                description: document.getElementById("description").value,
+                date: document.getElementById("date").value,
+                priority: document.getElementById("priority").value,
+            };
 
+            if (user) {
+                try {
+                    const GroupID = localStorage.getItem("selectedGroupID");
+                    const userTasks = collection(db, "groups", GroupID, "tasks");
+                    await addDoc(userTasks, newTask);
+                    window.location.href = "groupTasks.html";
+                    console.log("Task added for user:", user.uid);
+                } catch (error) {
+                    console.log(error);
+                }
+            } else {
+                window.location.href = "login.html";
+            }
+        });
 
         // Delete task
         deleteBtn.addEventListener("click", async () => {
