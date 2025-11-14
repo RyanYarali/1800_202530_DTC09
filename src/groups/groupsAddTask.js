@@ -1,4 +1,3 @@
-// taskEdit.js
 import { auth, db } from "/src/firebaseConfig.js";
 import { onAuthStateChanged } from "firebase/auth";
 import { getDoc, getDocs, addDoc, collection, doc } from "firebase/firestore";
@@ -79,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-        // Delete task
         deleteBtn.addEventListener("click", async () => {
             window.location.href = "groupTasks.html";
         });

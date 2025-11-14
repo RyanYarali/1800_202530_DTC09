@@ -1,4 +1,3 @@
-// taskEdit.js
 import { auth, db } from "/src/firebaseConfig.js";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
@@ -20,12 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "groups.html";
       return;
     }
-    
-    
+
     const groupRef = doc(db, "groups", GroupID);
-    
-    
-    // Load task into form
+
     try {
       const snap = await getDoc(groupRef);
       if (snap.exists()) {
@@ -44,9 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (err) {
       console.error("Error loading group:", err);
     }
-    
 
-    // Save changes
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       try {
@@ -62,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Delete task
     deleteBtn.addEventListener("click", async () => {
       if (!confirm("Are you sure you want to delete this group?")) return;
       try {
