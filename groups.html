@@ -7,6 +7,7 @@
     <title>Groups</title>
     <link rel="stylesheet" href="./src/styles/tasks.css" />
     <link rel="stylesheet" href="./src/styles/style.css" />
+    <link rel="stylesheet" href="./src/styles/overlay.css" />
     <script type="module" src="/src/components/site-navbar.js"></script>
     <script type="module" src="/src/components/site-bottom-bar.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -25,19 +26,40 @@
             },
         };
     </script>
+
     <script type="module" src="./src/groups/groupsLoad.js" defer></script>
+    <script type="module" src="./src/groups/groupsAddGroup.js" defer></script>
 </head>
 
 <body class="page-body" data-page="All Tasks">
     <site-navbar></site-navbar>
     <main class="page-main">
         <div>
-            <div class="container"><button type="add">Add a Group</button></div>
+            <div class="container"><button id="addGroupBtn">Add a Group</button></div>
             <div class="container"><button type="create"><a href="groupCreate.html">Create a Group</a></button></div>
         </div>
         <div id="groups-container" class="events-container"></div>
         </div>
     </main>
+
+    <div id="groupOverlay" class="overlay" aria-hidden="true">
+        <div class="overlay_panel" role="dialog" aria-modal="true" aria-labelledby="overlayTitle">
+            <header>
+                <h3 id="overlayTitle">Join Group</h3>
+            </header>
+
+            <form id="joinGroupForm">
+                <label for="groupIdInput">Group ID</label>
+                <input id="groupIdInput" name="groupId" type="text" required placeholder="Enter group ID"
+                    style="width:100%; padding:.5rem; margin-top:.25rem; margin-bottom:.5rem; box-sizing:border-box;">
+                <div style="display:flex; gap:.5rem; justify-content:flex-end;">
+                    <button type="button" id="cancelJoin">Cancel</button>
+                    <button type="submit">Join</button>
+                </div>
+                <div id="joinMessage" class="overlay_message" role="status" aria-live="polite"></div>
+            </form>
+        </div>
+    </div>
 
     <site-bottom-bar></site-bottom-bar>
 </body>

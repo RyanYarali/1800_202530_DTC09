@@ -1,0 +1,35 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 60;
+}
+
+.overlay.open {
+    display: flex;
+}
+
+.overlay_panel {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.25rem;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.overlay_panel header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.overlay_message {
+    margin-top: 0.5rem;
+    color: #333;
+    font-size: 0.9rem;
+}
