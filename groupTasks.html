@@ -29,10 +29,13 @@
 
 <body class="page-body" data-page="All Tasks">
     <site-navbar></site-navbar>
-    <main class="page-main">
-        <div style="margin: 10px">Filter</div>
-        <button><a href="groupDetail.html">Edit Group</a></button>
-        <button id="addTask"><a href="groupAddTask.html">Add Task</a></button>
+    <main>
+        <div style="display: flex; flex-direction: column; margin: 10px;">
+            <button><a href="groupDetail.html">Edit Group</a></button>
+            <button id="leaveGroup">Leave Group</button>
+            <button id="addTask"><a href="groupAddTask.html">Add Task</a></button>
+        </div>
+        <div style="margin: 10px;">Filter</div>
         <div id="events-container" class="events-container"></div>
     </main>
 

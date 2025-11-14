@@ -1,5 +1,9 @@
 import { onAuthReady } from "../authentication.js";
-import { collection, getDocs } from "firebase/firestore";
+
+// Import Firestore functions for reading data
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
+
+// Import initialized Firestore database instance
 import { db } from "../firebaseConfig.js";
 
 onAuthReady(async (user) => {
@@ -45,5 +49,14 @@ onAuthReady(async (user) => {
         });
         
         container.appendChild(card);
+    });
+    document.getElementById("leaveGroup").addEventListener("click", async () => {
+        try {
+            await deleteDoc(doc(db, `users/${user.uid}/groups/${GroupID}`));
+        } catch (err) {
+            console.error("Error leaving group:", err);
+        }
+        // Redirect to groups overview page
+        window.location.href = "groups.html";
     });
 });

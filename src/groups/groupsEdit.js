@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("name").value = group.name || "";
         document.getElementById("course").value = group.course || "";
         document.getElementById("description").value = group.description || "";
+        document.getElementById("groupID").innerHTML = GroupID || "";
         if (user.uid != group.uid) {
           form.className += ", disabled";
           console.log(user.uid)
