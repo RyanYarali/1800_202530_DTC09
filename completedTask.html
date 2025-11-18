@@ -8,12 +8,13 @@
     <script type="module" src="/src/components/site-navbar.js"></script>
     <script type="module" src="/src/components/site-bottom-bar.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="module" src="./src/review.js" defer></script>
+    <script type="module" src="./src/completedTask.js" defer></script>
 </head>
-<body>
+<body class="page-body" data-page="Completed Task">
     <site-navbar></site-navbar>
-
-    
+    <main class="page-main">
+    <div id="events-container" class="events-container"></div>
+    </main>
     <site-bottom-bar></site-bottom-bar>
 </body>
 </html>
