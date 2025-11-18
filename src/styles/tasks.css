@@ -244,3 +244,26 @@ div {
   opacity: 0.5;
   pointer-events: none;
 }
+
+
+  /* Consistent title style */
+  .form-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+
+  /* Make review page look like other white rounded cards */
+  #reviewForm {
+    background: #ffffff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Match spacing for form columns */
+  #reviewForm .col {
+    margin-bottom: 18px;
+  }
