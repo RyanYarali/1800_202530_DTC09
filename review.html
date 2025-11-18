@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leave a Review</title>
+
+    <!-- Navbar + Bottom Bar -->
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-bottom-bar.js"></script>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              mustard: "#F9A03F",
+              cream: "#ffffff",
+              blush: "#F5CAC3",
+              teal: "#84A59D",
+              coral: "#F28482",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Page Script -->
+    <script type="module" src="/src/review.js"></script>
+
+    <!-- Shared Styles (same as Edit Task) -->
+    <link rel="stylesheet" href="./src/styles/tasks.css" />
+    <style>
+      /* Consistent title style */
+      .form-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+
+  <body class="page-body" data-page="Review">
+    <site-navbar></site-navbar>
+
+    <main>
+      <form id="reviewForm" class="page-form">
+
+        <h2 class="form-title">Leave a Review</h2>
+
+        <!-- Name -->
+        <div class="col">
+          <label for="nameInput">Name:</label>
+          <input
+            type="text"
+            id="nameInput"
+            disabled
+            class="bg-gray-100"
+          />
+        </div>
+
+        <!-- Email -->
+        <div class="col">
+          <label for="emailInput">Email:</label>
+          <input
+            type="email"
+            id="emailInput"
+            disabled
+            class="bg-gray-100"
+          />
+        </div>
+
+        <!-- Rating -->
+        <div class="col">
+          <label for="rating">Rating:</label>
+          <select id="rating" name="rating">
+            <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+            <option value="4">⭐⭐⭐⭐ Very Good</option>
+            <option value="3">⭐⭐⭐ Good</option>
+            <option value="2">⭐⭐ Needs Improvement</option>
+            <option value="1">⭐ Poor</option>
+          </select>
+        </div>
+
+        <!-- Feedback -->
+        <div class="col">
+          <label for="feedback">Comments / Suggestions:</label>
+          <textarea
+            id="feedback"
+            class="w-full border px-3 py-2 rounded"
+            rows="4"
+            placeholder="Let us know what you think!"
+          ></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="btn-save">
+          <button type="submit">Submit Review</button>
+        </div>
+
+      </form>
+    </main>
+
+    <site-bottom-bar></site-bottom-bar>
+  </body>
+</html>
