@@ -46,7 +46,15 @@
   flex-direction: column;
   gap: 16px;
   margin: 16px;
+  padding: 0;
 }
+
+.events-container h2 {
+  margin: 0; /* Remove default margin */
+  padding: 0 15px; /* Match card padding for alignment */
+  color: #230007;
+}
+
 .page-form {
   display: flex;
   flex-direction: column;
@@ -120,15 +128,14 @@ div {
 
 .col {
   flex-direction: column;
-  background-color: #e7e0e8;
+  /* background-color: #e7e0e8; */
   margin: 10px;
   padding: 15px;
   transition: all 0.3s ease;
   border-radius: 25px;
   width: 100%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
-.btn-save{
+.btn-save {
   flex-direction: column;
   background-color: #ffffff00;
   margin: 10px;
@@ -137,11 +144,9 @@ div {
   transition: all 0.3s ease;
   border-radius: 25px;
   width: 100%;
- 
 }
 
 .card {
-  
   border-radius: 50px;
   justify-content: space-around;
   background-color: rgba(255, 255, 255, 0.8);
@@ -149,6 +154,9 @@ div {
   -webkit-backdrop-filter: blur(10px);
   padding: 15px;
   transition: all 0.3s ease;
+  margin: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
 }
 
 .footer {
