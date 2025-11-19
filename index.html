@@ -22,6 +22,27 @@
     <!-- our own navbar goes here -->
     <site-navbar></site-navbar>
 
+    <!-- Global Theme Toggle -->
+    <div style="display: flex; justify-content: center; margin: 0 1rem">
+      <button
+        id="globalThemeToggle"
+        type="button"
+        style="
+        
+          margin-top: 0.25rem;
+          padding: 0.50rem 7rem;
+          border-radius: 10px;
+          font-weight: 800;
+          border: 1px solid var(--border, rgba(0, 0, 0, 0.15));
+          background: var(--surface-1, #f5f0f6);
+          color: var(--text, #230007);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        "
+      >
+        Press To Enable Dark Mode
+      </button>
+    </div>
+
     <!-- Main content goes here -->
     <!-- This is the welcome on the landing page, with a login/signup button -->
     <section class="hero-section">
@@ -64,6 +85,32 @@
     <!---------------------------------------------->
 
     <!-- Link to scripts of your own -->
-    
+    <script>
+      (function () {
+        const btn = document.getElementById("globalThemeToggle");
+        if (!btn) return;
+        function label() {
+          const t =
+            document.documentElement.getAttribute("data-theme") || "light";
+          btn.textContent = t === "dark" ? " Press To Enable Light Mode" : "Press To Enable Dark Mode";
+        }
+        btn.addEventListener("click", () => {
+          const cur =
+            document.documentElement.getAttribute("data-theme") === "dark"
+              ? "dark"
+              : "light";
+          const next = cur === "dark" ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", next);
+          try {
+            localStorage.setItem("theme", next);
+          } catch (e) {}
+          label();
+        });
+        label();
+        window.addEventListener("storage", (e) => {
+          if (e.key === "theme") label();
+        });
+      })();
+    </script>
   </body>
 </html>
