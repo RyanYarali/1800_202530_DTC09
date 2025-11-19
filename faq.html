@@ -1,19 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ | Help & Support</title>
     <link rel="stylesheet" href="./src/styles/tasks.css" />
     <script type="module" src="/src/components/site-navbar.js"></script>
     <script type="module" src="/src/components/site-bottom-bar.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="module" src="./src/review.js" defer></script>
-</head>
-<body>
+    <style>
+      main.faq-wrapper {
+        flex-direction: column;
+        gap: 1.25rem;
+        margin: 1rem;
+      }
+      .faq-header {
+        flex-direction: column;
+        background: rgba(35, 0, 7, 0.85);
+        color: #fff;
+        padding: 1.5rem 1.25rem;
+        border-radius: 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      .faq-tags {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+      .faq-tag {
+        background: #f9a03f;
+        color: #230007;
+        padding: 0.35rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+      }
+      .faq-tag.active {
+        background: #a40606;
+        color: #fff;
+      }
+      .faq-section {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      details.faq-item {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 25px;
+        padding: 1rem 1.2rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+      }
+      details.faq-item summary {
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1.05rem;
+      }
+      details.faq-item p {
+        margin: 0.65rem 0 0;
+        line-height: 1.45;
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body class="page-body">
     <site-navbar></site-navbar>
+    <main class="faq-wrapper">
+      <section class="faq-header">
+        <h1 class="text-2xl font-semibold mb-1">Frequently Asked Questions</h1>
+        <p class="opacity-90">
+          Quick answers about accounts, tasks, groups, and privacy.
+        </p>
+        <div class="faq-tags" id="faqTags">
+          <button class="faq-tag" data-tag="all" type="button">All</button>
+          <button class="faq-tag" data-tag="account" type="button">
+            Account
+          </button>
+          <button class="faq-tag" data-tag="tasks" type="button">Tasks</button>
+          <button class="faq-tag" data-tag="groups" type="button">
+            Groups
+          </button>
+          <button class="faq-tag" data-tag="notifications" type="button">
+            Notifications
+          </button>
+          <button class="faq-tag" data-tag="privacy" type="button">
+            Privacy
+          </button>
+          <button class="faq-tag" data-tag="technical" type="button">
+            Technical
+          </button>
+        </div>
+      </section>
 
-    
+      <section class="faq-section" id="faqList">
+        <!-- Account -->
+        <details class="faq-item" data-tags="account">
+          <summary>How do I create an account?</summary>
+          <p>
+            Click <strong>Sign Up</strong> on the home page, provide a valid
+            email and password, then confirm. We use Firebase Authentication to
+            securely manage sign-ins.
+          </p>
+        </details>
+        <details class="faq-item" data-tags="account technical">
+          <summary>I forgot my password. What now?</summary>
+          <p>
+            Password reset isn't available in-app yet. If you get locked out,
+            please contact your instructor or project admin to assist with a
+            reset.
+          </p>
+        </details>
+        <details class="faq-item" data-tags="account privacy">
+          <summary>What profile information is visible to others?</summary>
+          <p>
+            Only your display name and avatar appear in shared group views.
+            Email addresses remain private and are never shown to other users.
+          </p>
+        </details>
+
+        <!-- Tasks -->
+        <details class="faq-item" data-tags="tasks">
+          <summary>How do I create a task?</summary>
+          <p>
+            Navigate to <strong>Add Task</strong>, fill in the name,
+            description, and optional due date, then click
+            <strong>Save</strong>. Your task appears instantly in your task
+            list.
+          </p>
+        </details>
+        <details class="faq-item" data-tags="tasks">
+          <summary>Can I edit or delete a task later?</summary>
+          <p>
+            Yes. Open a task's detail page and choose <strong>Edit</strong> to
+            update fields or <strong>Delete</strong> to remove it permanently.
+          </p>
+        </details>
+        <details class="faq-item" data-tags="tasks groups">
+          <summary>
+            What is the difference between personal and group tasks?
+          </summary>
+          <p>
+            Personal tasks are visible only to you. Group tasks are shared with
+            all members of a group and can be collaboratively updated.
+          </p>
+        </details>
+
+        <!-- Groups -->
+        <details class="faq-item" data-tags="groups">
+          <summary>How do I create a group?</summary>
+          <p>
+            Go to <strong>Create Group</strong>, enter a name, course, and
+            description. Share the generated Group ID with classmates so they
+            can join it from the <strong>Groups</strong> page using
+            <em>Join Group</em>.
+          </p>
+        </details>
+        <details class="faq-item" data-tags="groups tasks">
+          <summary>How do I assign a task to a group member?</summary>
+          <p>
+            Assignments aren't supported yet. Group tasks are shared and visible
+            to all members, and anyone in the group can update task details.
+          </p>
+        </details>
+        <details class="faq-item" data-tags="groups notifications">
+          <summary>Will members be notified about new group tasks?</summary>
+          <p>
+            Members see updates when they next load the group dashboard.
+            Real-time notifications may be added in future releases.
+          </p>
+        </details>
+
+        <!-- Notifications -->
+        <details class="faq-item" data-tags="notifications tasks technical">
+          <summary>Do tasks send reminder notifications?</summary>
+          <p>
+            Currently reminders are not automatic. We recommend reviewing your
+            dashboard daily. Scheduled notifications are on our roadmap.
+          </p>
+        </details>
+
+        <!-- Privacy & Data -->
+        <details class="faq-item" data-tags="privacy technical">
+          <summary>How is my data stored?</summary>
+          <p>
+            All user and task data is stored securely in Firebase (Firestore +
+            Authentication). Communication is encrypted over HTTPS.
+          </p>
+        </details>
+        <details class="faq-item" data-tags="privacy">
+          <summary>Can I delete my account and data?</summary>
+          <p>
+            In-app account deletion isn't available yet. To request removal of
+            your account and related data, please contact your instructor or
+            project admin.
+          </p>
+        </details>
+        <details class="faq-item" data-tags="privacy account">
+          <summary>Do you share data with third parties?</summary>
+          <p>
+            No. Data is used only for providing core functionality (task and
+            group management) and is never sold or shared externally.
+          </p>
+        </details>
+
+        <!-- Technical -->
+        <details class="faq-item" data-tags="technical">
+          <summary>Which browsers are supported?</summary>
+          <p>
+            Latest versions of Chrome, Firefox, Edge, and Safari. Mobile modern
+            browsers generally work; older versions may have limited support.
+          </p>
+        </details>
+        <details class="faq-item" data-tags="technical tasks">
+          <summary>Why am I not seeing my recent changes?</summary>
+          <p>
+            Try refreshing the page. If the issue persists, ensure your network
+            connection is stable. Firebase sync may take a moment under poor
+            connectivity.
+          </p>
+        </details>
+        <details class="faq-item" data-tags="technical">
+          <summary>How often is new functionality released?</summary>
+          <p>
+            We aim for iterative improvements. Significant features (like
+            real-time alerts) will be announced on the dashboard.
+          </p>
+        </details>
+      </section>
+      <div style="justify-content: center; margin: 1rem 0"></div>
+    </main>
     <site-bottom-bar></site-bottom-bar>
-</body>
+    <script>
+      (function () {
+        const tagButtons = Array.from(document.querySelectorAll(".faq-tag"));
+        const items = Array.from(document.querySelectorAll("details.faq-item"));
+        let active = "all";
+
+        function apply() {
+          items.forEach((it) => {
+            const tags = (it.dataset.tags || "").split(/\s+/);
+            const show = active === "all" || tags.includes(active);
+            it.style.display = show ? "block" : "none";
+          });
+        }
+
+        tagButtons.forEach((btn) =>
+          btn.addEventListener("click", () => {
+            active = btn.dataset.tag || "all";
+            tagButtons.forEach((b) => b.classList.toggle("active", b === btn));
+            apply();
+          })
+        );
+
+        const allBtn = tagButtons.find((b) => b.dataset.tag === "all");
+        if (allBtn) {
+          allBtn.classList.add("active");
+        }
+        apply();
+      })();
+    </script>
+  </body>
 </html>
