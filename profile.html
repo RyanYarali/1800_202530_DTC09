@@ -16,34 +16,55 @@
     <script type="module" src="/src/profile.js"></script>
   </head>
 
-  <body class="page-body" data-page="Profile">
+  <body class="page-body" >
     <!-- Navbar -->
     <site-navbar></site-navbar>
 
-    <main class="flex flex-col items-center justify-center bg-gradient-to-b from-white to-gray-50">
+    <main
+      class="flex flex-col items-center justify-center bg-gradient-to-b from-white to-gray-50"
+    >
       <!-- Profile Card -->
-      <div class="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center pb-32">
-        
+      <div
+        class="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md text-center pb-32"
+      >
         <!-- Profile Icon -->
         <div class="flex justify-center mb-6">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width: 80px; height: 80px; display: block;">
+          <svg
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+            style="width: 80px; height: 80px; display: block"
+          >
             <defs>
-              <linearGradient id="profileGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#A40606;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#F9A03F;stop-opacity:1" />
+              <linearGradient
+                id="profileGrad"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop
+                  offset="0%"
+                  style="stop-color: #a40606; stop-opacity: 1"
+                />
+                <stop
+                  offset="100%"
+                  style="stop-color: #f9a03f; stop-opacity: 1"
+                />
               </linearGradient>
             </defs>
-            
+
             <!-- Background circle -->
-            <circle cx="50" cy="50" r="48" fill="url(#profileGrad)"/>
-            
+            <circle cx="50" cy="50" r="48" fill="url(#profileGrad)" />
+
             <!-- User icon -->
             <!-- Head -->
-            <circle cx="50" cy="38" r="14" fill="#F5F0F6"/>
-            
+            <circle cx="50" cy="38" r="14" fill="#F5F0F6" />
+
             <!-- Body/Shoulders -->
-            <path d="M 28 75 Q 28 58 50 58 Q 72 58 72 75 L 72 85 Q 72 90 50 90 Q 28 90 28 85 Z" 
-                  fill="#F5F0F6"/>
+            <path
+              d="M 28 75 Q 28 58 50 58 Q 72 58 72 75 L 72 85 Q 72 90 50 90 Q 28 90 28 85 Z"
+              fill="#F5F0F6"
+            />
           </svg>
         </div>
 
@@ -53,7 +74,9 @@
         <form id="profileForm" class="space-y-4 text-left">
           <!-- Name -->
           <div>
-            <label class="block text-gray-600 text-sm mb-1" for="nameInput">Name</label>
+            <label class="block text-gray-600 text-sm mb-1" for="nameInput"
+              >Name</label
+            >
             <input
               type="text"
               id="nameInput"
@@ -66,7 +89,9 @@
 
           <!-- User ID (read-only) -->
           <div>
-            <label class="block text-gray-600 text-sm mb-1" for="userIdInput">User ID</label>
+            <label class="block text-gray-600 text-sm mb-1" for="userIdInput"
+              >User ID</label
+            >
             <input
               type="text"
               id="userIdInput"
@@ -79,7 +104,9 @@
 
           <!-- Email -->
           <div>
-            <label class="block text-gray-600 text-sm mb-1" for="emailInput">Email</label>
+            <label class="block text-gray-600 text-sm mb-1" for="emailInput"
+              >Email</label
+            >
             <input
               type="email"
               id="emailInput"
@@ -92,7 +119,9 @@
 
           <!-- School -->
           <div>
-            <label class="block text-gray-600 text-sm mb-1" for="schoolInput">School</label>
+            <label class="block text-gray-600 text-sm mb-1" for="schoolInput"
+              >School</label
+            >
             <input
               type="text"
               id="schoolInput"
@@ -105,7 +134,9 @@
 
           <!-- City -->
           <div>
-            <label class="block text-gray-600 text-sm mb-1" for="cityInput">City</label>
+            <label class="block text-gray-600 text-sm mb-1" for="cityInput"
+              >City</label
+            >
             <input
               type="text"
               id="cityInput"
@@ -116,31 +147,45 @@
             />
           </div>
 
-          <!-- Buttons -->
-          <div class="flex flex-wrap justify-end gap-3 mt-6">
-            <button
-              id="editButton"
-              type="button"
-              class="px-4 py-2 rounded-lg bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium transition"
-            >
-              Edit
-            </button>
+          <!-- Appearance + Buttons -->
+          <div class="flex flex-col gap-4 mt-6">
+            <div class="flex flex-wrap justify-end gap-3">
+              <button
+                id="editButton"
+                type="button"
+                class="px-4 py-2 rounded-lg bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium transition"
+              >
+                Edit
+              </button>
 
-            <button
-              id="saveButton"
-              type="button"
-              class="px-4 py-2 rounded-lg bg-[#A40606] hover:bg-red-700 text-white font-medium transition"
-            >
-              Save
-            </button>
+              <button
+                id="saveButton"
+                type="button"
+                class="px-4 py-2 rounded-lg bg-[#A40606] hover:bg-red-700 text-white font-medium transition"
+              >
+                Save
+              </button>
 
-            <button
-              id="logout"
-              type="button"
-              class="px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-800 text-white font-medium transition"
-            >
-              Logout
-            </button>
+              <button
+                id="logout"
+                type="button"
+                class="px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-800 text-white font-medium transition"
+              >
+                Logout
+              </button>
+              <div
+                class="flex items-center justify-between w-full shadow-lg rounded-lg p-4 bg-gray-100"
+              >
+                <div class="text-sm text-gray-600">Dark Mode</div>
+                <button
+                  id="themeToggle"
+                  type="button"
+                  class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium transition"
+                >
+                  Enable
+                </button>
+              </div>
+            </div>
           </div>
         </form>
       </div>
