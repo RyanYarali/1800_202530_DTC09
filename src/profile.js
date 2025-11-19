@@ -3,7 +3,6 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 document.addEventListener("DOMContentLoaded", () => {
-
   const nameInput = document.getElementById("nameInput");
   const userIdInput = document.getElementById("userIdInput"); // User ID field
   const schoolInput = document.getElementById("schoolInput");
@@ -12,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const editButton = document.getElementById("editButton");
   const saveButton = document.getElementById("saveButton");
   const logoutButton = document.getElementById("logout");
+  const themeToggle = document.getElementById("themeToggle");
 
   // -------------------------------------------------------------
   // Populate user info on page load
@@ -96,4 +96,33 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+// Dark/Light Theme Toggle
+  const applyThemeLabel = () => {
+    try {
+      const theme =
+        document.documentElement.getAttribute("data-theme") || "light";
+      if (themeToggle)
+        themeToggle.textContent = theme === "dark" ? "Disable" : "Enable";
+    } catch (_) {}
+  };
+
+  const setTheme = (theme) => {
+    document.documentElement.setAttribute("data-theme", theme);
+    try {
+      localStorage.setItem("theme", theme);
+    } catch (_) {}
+    applyThemeLabel();
+  };
+
+  // Initialize button label
+  applyThemeLabel();
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const current =
+        document.documentElement.getAttribute("data-theme") === "dark"
+          ? "dark"
+          : "light";
+      setTheme(current === "dark" ? "light" : "dark");
+    });
+  }
 });
