@@ -1,7 +1,7 @@
 // Import specific functions from the Firebase Auth SDK
 import { onAuthStateChanged } from "firebase/auth";
-
-import { auth } from "/src/firebaseConfig.js";
+import { doc, getDoc } from "firebase/firestore";
+import { auth, db } from "/src/firebaseConfig.js";
 
 class SiteNavbar extends HTMLElement {
   constructor() {
@@ -9,6 +9,7 @@ class SiteNavbar extends HTMLElement {
   }
 
   connectedCallback() {
+    // Theme is now set by page logic (profile.js) after Firestore loads
     this.renderNavbar();
     // Defer setup so the rest of the page can set data attributes
     requestAnimationFrame(() => this.setupNavbar());
@@ -18,6 +19,7 @@ class SiteNavbar extends HTMLElement {
     this.innerHTML = `
       <!-- Navbar: single source of truth -->
       <link rel="stylesheet" href="./src/styles/style.css" />
+      <link rel="stylesheet" href="./src/styles/dark.css" />
       <nav class="navbar">
         <div class="nav-left" style="display:flex; align-items:center; gap:1rem;">
           <button class="navbar-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
@@ -59,6 +61,14 @@ class SiteNavbar extends HTMLElement {
           <a href="review.html">Review</a>
           <a href="faq.html">FAQ</a>
           <a href="aboutUs.html">About Us</a>
+          
+          <!-- Dark Mode Toggle in Hamburger Menu -->
+          <div class="hamburger-theme-toggle" id="hamburgerThemeToggle" style="display:none;">
+            <span class="theme-label">Dark Mode</span>
+            <button class="theme-switch" id="themeSwitchBtn" type="button" role="switch" aria-checked="false">
+              <span class="theme-slider"></span>
+            </button>
+          </div>
         </div>
       </nav>
     `;
@@ -88,12 +98,15 @@ class SiteNavbar extends HTMLElement {
       if (brand) brand.style.display = "none";
     }
 
-    // Show toggle on pages that opt-in OR on login/signup/profile pages
+    // Show toggle on pages that opt-in OR on profile page
     const showToggle = document.body?.dataset?.showToggle === "true";
     const currentPage = window.location.pathname.split("/").pop().toLowerCase();
-    const alwaysShowTogglePages = ["login.html", "profile.html"];
+    const alwaysShowTogglePages = ["profile.html"];
+    // Hide toggle on index.html and login.html
+    const hideTogglePages = ["index.html", "login.html", ""];
     const shouldShowToggle =
-      showToggle || alwaysShowTogglePages.includes(currentPage);
+      (showToggle || alwaysShowTogglePages.includes(currentPage)) &&
+      !hideTogglePages.includes(currentPage);
 
     if (!shouldShowToggle && toggle) toggle.style.display = "none";
 
@@ -135,17 +148,90 @@ class SiteNavbar extends HTMLElement {
     authControls.innerHTML = "";
 
     // Use Firebase auth to update avatar destination
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
       if (user) {
         // Show profile icon (link to profile page)
         authControls.innerHTML = `<div class="profile-link" title="${
           (user.displayName || user.email) ?? "Profile"
         }">${profileIconSVG}</div>`;
+        // Load theme from Firestore and apply
+        try {
+          const snap = await getDoc(doc(db, "users", user.uid));
+          const theme = snap.data()?.theme;
+          if (theme === "dark" || theme === "light") {
+            document.documentElement.setAttribute("data-theme", theme);
+            sessionStorage.setItem("theme", theme);
+          }
+        } catch (e) {
+          // Fail silently if theme cannot be loaded
+        }
       } else {
-        // Don't show profile icon, but maintain the space
         authControls.innerHTML = "";
+        // Default to light when logged out
+        document.documentElement.setAttribute("data-theme", "light");
+        sessionStorage.setItem("theme", "light");
       }
+      updateThemeToggle();
     });
+
+    // Theme toggle in hamburger menu
+    const hamburgerThemeToggle = this.querySelector("#hamburgerThemeToggle");
+    const themeSwitchBtn = this.querySelector("#themeSwitchBtn");
+
+    // Show theme toggle on pages except index and login
+    const hideThemePages = ["index.html", "login.html", ""];
+    const shouldShowThemeToggle = !hideThemePages.includes(currentPage);
+
+    if (shouldShowThemeToggle && hamburgerThemeToggle) {
+      hamburgerThemeToggle.style.display = "flex";
+    }
+
+    // Update theme toggle UI
+    const updateThemeToggle = () => {
+      const currentTheme =
+        document.documentElement.getAttribute("data-theme") || "light";
+      if (themeSwitchBtn) {
+        const isDark = currentTheme === "dark";
+        themeSwitchBtn.setAttribute("aria-checked", isDark ? "true" : "false");
+
+        if (isDark) {
+          themeSwitchBtn.classList.add("active");
+        } else {
+          themeSwitchBtn.classList.remove("active");
+        }
+      }
+    };
+
+    // Theme toggle click handler
+    if (themeSwitchBtn) {
+      themeSwitchBtn.addEventListener("click", async () => {
+        const currentTheme =
+          document.documentElement.getAttribute("data-theme") === "dark"
+            ? "dark"
+            : "light";
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+        document.documentElement.setAttribute("data-theme", newTheme);
+        sessionStorage.setItem("theme", newTheme);
+        updateThemeToggle();
+
+        // Save to Firestore if user is logged in
+        const user = auth.currentUser;
+        if (user) {
+          try {
+            const { updateDoc } = await import("firebase/firestore");
+            await updateDoc(doc(db, "users", user.uid), { theme: newTheme });
+          } catch (e) {
+            console.error("Error saving theme:", e);
+          }
+        }
+      });
+
+      // Initialize on page load
+      updateThemeToggle();
+    }
+
+    // Theme sync via storage is no longer needed; Firestore now authoritative
   }
 }
 
