@@ -1,6 +1,8 @@
 import { auth, db } from "/src/firebaseConfig.js";
 import { collection, addDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
+import { createLoadingSpinner } from "./loader.js"; // import loader function
+const loader = createLoadingSpinner(); //set variable to loader
 
 document
 	.getElementById("taskForm")
@@ -13,6 +15,8 @@ document
 			date: document.getElementById("date").value,
 			priority: document.getElementById("priority").value,
 		};
+		// Show loader immediately
+		loader.show(); 
 		onAuthStateChanged(auth, async (users) => {
 			if (users) {
 				try {
@@ -22,6 +26,9 @@ document
 					console.log("Task added for user:", users.uid);
 				} catch (error) {
 					console.log(error);
+				} finally{
+					// Hide loader no matter what
+					loader.hide()
 				}
 			}
 		});
