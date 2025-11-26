@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FAQ | Help & Support</title>
+    <!-- Instant theme application (no flash) -->
+    <script>
+      (function () {
+        const cachedTheme = sessionStorage.getItem("theme");
+        if (cachedTheme === "dark" || cachedTheme === "light") {
+          document.documentElement.setAttribute("data-theme", cachedTheme);
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="./src/styles/tasks.css" />
     <script type="module" src="/src/components/site-navbar.js"></script>
     <script type="module" src="/src/components/site-bottom-bar.js"></script>
@@ -24,7 +33,6 @@
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        
       }
       .faq-tags {
         flex-wrap: wrap;

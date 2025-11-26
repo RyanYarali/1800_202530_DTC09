@@ -5,6 +5,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Groups</title>
+    <!-- Instant theme application (no flash) -->
+    <script>
+        (function() {
+            const cachedTheme = sessionStorage.getItem("theme");
+            if (cachedTheme === "dark" || cachedTheme === "light") {
+                document.documentElement.setAttribute("data-theme", cachedTheme);
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="./src/styles/tasks.css" />
     <link rel="stylesheet" href="./src/styles/style.css" />
     <link rel="stylesheet" href="./src/styles/overlay.css" />

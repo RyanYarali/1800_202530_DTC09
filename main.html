@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome | TaskMate</title>
+    <!-- Instant theme application (no flash) -->
+    <script>
+      (function () {
+        const cachedTheme = sessionStorage.getItem("theme");
+        if (cachedTheme === "dark" || cachedTheme === "light") {
+          document.documentElement.setAttribute("data-theme", cachedTheme);
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="./src/styles/style.css" />
     <script type="module" src="/src/components/site-navbar.js"></script>
     <script type="module" src="/src/components/site-bottom-bar.js"></script>
@@ -73,11 +82,12 @@
           </div>
         </div>
 
-
         <div
           class="p-8 bg-white/80 backdrop-blur-md rounded-[30px] shadow-lg border border-white/20"
         >
-          <h3 class="text-2xl font-bold text-[#230007] mb-6 flex items-center gap-2">
+          <h3
+            class="text-2xl font-bold text-[#230007] mb-6 flex items-center gap-2"
+          >
             <span>🗓️</span> Today's Tasks
           </h3>
           <div id="todays-tasks-container" class="space-y-4">

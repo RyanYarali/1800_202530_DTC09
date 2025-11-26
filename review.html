@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leave a Review</title>
 
+    <!-- Instant theme application (no flash) -->
+    <script>
+      (function () {
+        const cachedTheme = sessionStorage.getItem("theme");
+        if (cachedTheme === "dark" || cachedTheme === "light") {
+          document.documentElement.setAttribute("data-theme", cachedTheme);
+        }
+      })();
+    </script>
+
     <!-- Navbar + Bottom Bar -->
     <script type="module" src="/src/components/site-navbar.js"></script>
     <script type="module" src="/src/components/site-bottom-bar.js"></script>
@@ -48,29 +58,18 @@
 
     <main>
       <form id="reviewForm" class="page-form">
-
         <h2 class="form-title">Leave a Review</h2>
 
         <!-- Name -->
         <div class="col">
           <label for="nameInput">Name:</label>
-          <input
-            type="text"
-            id="nameInput"
-            disabled
-            class="bg-gray-100"
-          />
+          <input type="text" id="nameInput" disabled class="bg-gray-100" />
         </div>
 
         <!-- Email -->
         <div class="col">
           <label for="emailInput">Email:</label>
-          <input
-            type="email"
-            id="emailInput"
-            disabled
-            class="bg-gray-100"
-          />
+          <input type="email" id="emailInput" disabled class="bg-gray-100" />
         </div>
 
         <!-- Rating -->
@@ -100,7 +99,6 @@
         <div class="btn-save">
           <button type="submit">Submit Review</button>
         </div>
-
       </form>
     </main>
 

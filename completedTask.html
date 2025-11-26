@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- Instant theme application (no flash) -->
+    <script>
+      (function () {
+        const cachedTheme = sessionStorage.getItem("theme");
+        if (cachedTheme === "dark" || cachedTheme === "light") {
+          document.documentElement.setAttribute("data-theme", cachedTheme);
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="./src/styles/tasks.css" />
     <script type="module" src="/src/components/site-navbar.js"></script>
     <script type="module" src="/src/components/site-bottom-bar.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module" src="./src/completedTask.js" defer></script>
-</head>
-<body class="page-body" data-page="Completed Task">
+  </head>
+  <body class="page-body" data-page="Completed Task">
     <site-navbar></site-navbar>
     <main class="page-main">
-    <div id="events-container" class="events-container"></div>
+      <div id="events-container" class="events-container"></div>
     </main>
     <site-bottom-bar></site-bottom-bar>
-</body>
+  </body>
 </html>
