@@ -4,6 +4,8 @@ import { onAuthReady } from "./authentication.js";
 import { collection, getDocs, doc, deleteDoc, setDoc } from "firebase/firestore";
 // Import initialized Firestore database instance
 import { db } from "./firebaseConfig.js";
+import { createLoadingSpinner } from "./loader.js"; // import l
+const loader = createLoadingSpinner(); //set variable to loader
 
 // --- RENDER FUNCTION: render completed tasks based on provided data ---
 function renderCompletedTasks(container, tasksByDate, user) {
@@ -73,7 +75,7 @@ function renderCompletedTasks(container, tasksByDate, user) {
 
           console.log(`Task "${task.name}" marked as pending again.`);
           setTimeout(() => {
-            window.location.href = "viewTasks.html";
+            window.location.href = "completedTask.html";
           }, 300);
         } catch (error) {
           console.error("Error restoring task:", error);
@@ -99,6 +101,8 @@ onAuthReady(async (user) => {
     return;
   }
 
+  // SHOW LOADER at the start
+  loader.show();
   const container = document.getElementById("events-container");
   container.innerHTML = "";
 
@@ -136,6 +140,7 @@ onAuthReady(async (user) => {
 
   // --- Function to filter tasks and re-render ---
   function filterTasks() {
+    loader.show();
     const selectedCourse = courseSelect.value;
     const selectedPriority = document.getElementById("filterPriority").value;
 
@@ -154,6 +159,7 @@ onAuthReady(async (user) => {
     });
 
     renderCompletedTasks(container, tasksByDate, user);
+    loader.hide();
   }
 
   // --- Filter change listeners ---
@@ -171,4 +177,5 @@ onAuthReady(async (user) => {
     });
 
   renderCompletedTasks(container, tasksByDate, user);
+  loader.hide();
 });

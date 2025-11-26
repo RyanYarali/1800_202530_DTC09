@@ -133,7 +133,7 @@ onAuthReady(async (user) => {
 
             // Smooth redirect
             setTimeout(() => {
-              window.location.href = "completedTask.html";
+              window.location.href = "viewTasks.html";
             }, 300);
           } catch (error) {
             console.error("Error moving task:", error);
