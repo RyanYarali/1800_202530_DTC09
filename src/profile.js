@@ -6,7 +6,6 @@ const loader = createLoadingSpinner(); //set variable to loader
 
 
 document.addEventListener("DOMContentLoaded", () => {
-
   const nameInput = document.getElementById("nameInput");
   const userIdInput = document.getElementById("userIdInput"); // User ID field
   const schoolInput = document.getElementById("schoolInput");
@@ -15,9 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const editButton = document.getElementById("editButton");
   const saveButton = document.getElementById("saveButton");
   const logoutButton = document.getElementById("logout");
+  const themeToggle = document.getElementById("themeToggle");
 
   // -------------------------------------------------------------
-  // Populate user info on page load
+  // Populate user info and theme on page load
   // -------------------------------------------------------------
   onAuthStateChanged(auth, async (user) => {
     if (!user) {
@@ -39,11 +39,21 @@ document.addEventListener("DOMContentLoaded", () => {
         schoolInput.value = userData.school || "";
         cityInput.value = userData.city || "";
         emailInput.value = userData.email || user.email || "";
+        // Apply theme from Firestore if present
+        if (userData.theme === "dark" || userData.theme === "light") {
+          document.documentElement.setAttribute("data-theme", userData.theme);
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
       } else {
         console.log("User document does not exist!");
+        document.documentElement.setAttribute("data-theme", "light");
       }
+      applyThemeLabel();
     } catch (err) {
       console.error("Error fetching user data:", err);
+      document.documentElement.setAttribute("data-theme", "light");
+      applyThemeLabel();
     }
     finally{
       loader.hide()
@@ -108,4 +118,63 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Dark/Light Theme Toggle
+  const applyThemeLabel = () => {
+    try {
+      const theme =
+        document.documentElement.getAttribute("data-theme") || "light";
+      if (themeToggle) {
+        // Update toggle switch state
+        const isDark = theme === "dark";
+        themeToggle.setAttribute("aria-checked", isDark ? "true" : "false");
+
+        // Toggle background color
+        if (isDark) {
+          themeToggle.classList.add("bg-[#A40606]");
+          themeToggle.classList.remove("bg-gray-300");
+        } else {
+          themeToggle.classList.remove("bg-[#A40606]");
+          themeToggle.classList.add("bg-gray-300");
+        }
+
+        // Toggle slider position
+        const slider = themeToggle.querySelector(".toggle-slider");
+        if (slider) {
+          if (isDark) {
+            slider.classList.add("translate-x-7");
+          } else {
+            slider.classList.remove("translate-x-7");
+          }
+        }
+      }
+    } catch (_) {}
+  };
+
+  // Save theme to Firestore for the current user
+  const setTheme = async (theme) => {
+    document.documentElement.setAttribute("data-theme", theme);
+    sessionStorage.setItem("theme", theme);
+    try {
+      const user = auth.currentUser;
+      if (user) {
+        const userRef = doc(db, "users", user.uid);
+        await updateDoc(userRef, { theme });
+      }
+    } catch (err) {
+      console.error("Error saving theme to Firestore:", err);
+    }
+    applyThemeLabel();
+  };
+
+  // Initialize button label
+  applyThemeLabel();
+  if (themeToggle) {
+    themeToggle.addEventListener("click", async () => {
+      const current =
+        document.documentElement.getAttribute("data-theme") === "dark"
+          ? "dark"
+          : "light";
+      await setTheme(current === "dark" ? "light" : "dark");
+    });
+  }
 });

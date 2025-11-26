@@ -1,0 +1,381 @@
+/* Global Dark Theme */
+/* Applies when <html data-theme="dark"> is present */
+
+:root[data-theme="dark"] {
+  /* Brand accents */
+  --accent-red: #a40606;
+  --accent-amber: #f9a03f;
+  /* Warm neutrals */
+  --bg: #0f0e10;
+  --surface-1: #151214;
+  --surface-2: #1b1619;
+  --border: #3b2e34;
+  --text: #ecebed;
+  --text-muted: #cfc8cd;
+  color-scheme: dark;
+}
+
+:root[data-theme="dark"] body.page-body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+:root[data-theme="dark"] body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* Generic text color normalization */
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] p,
+:root[data-theme="dark"] li,
+:root[data-theme="dark"] label,
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] button,
+:root[data-theme="dark"] a,
+:root[data-theme="dark"] h1,
+:root[data-theme="dark"] h2,
+:root[data-theme="dark"] h3,
+:root[data-theme="dark"] h4 {
+  color: var(--text);
+}
+
+/* Common Tailwind utility overrides present in markup */
+:root[data-theme="dark"] .bg-white {
+  background-color: var(--surface-1) !important;
+}
+:root[data-theme="dark"] .bg-white\/80 {
+  background-color: rgba(27, 22, 25, 0.85) !important;
+}
+:root[data-theme="dark"] .bg-gray-50 {
+  background-color: var(--surface-1) !important;
+}
+:root[data-theme="dark"] .bg-gray-50\/50 {
+  background-color: rgba(27, 22, 25, 0.5) !important;
+}
+:root[data-theme="dark"] .bg-gray-100 {
+  background-color: var(--surface-1) !important;
+}
+:root[data-theme="dark"] .bg-gray-200 {
+  background-color: var(--surface-1) !important;
+}
+:root[data-theme="dark"] .bg-gray-300 {
+  background-color: var(--surface-2) !important;
+}
+:root[data-theme="dark"] .text-gray-800 {
+  color: var(--text) !important;
+}
+:root[data-theme="dark"] .text-gray-700 {
+  color: var(--text) !important;
+}
+:root[data-theme="dark"] .text-gray-600 {
+  color: var(--text-muted) !important;
+}
+:root[data-theme="dark"] .text-gray-500 {
+  color: #a9a1a6 !important;
+}
+:root[data-theme="dark"] .border {
+  border-color: var(--border) !important;
+}
+:root[data-theme="dark"] .from-white {
+  --tw-gradient-from: var(--surface-2) !important;
+  --tw-gradient-stops: var(--tw-gradient-from),
+    var(--tw-gradient-to, rgba(27, 22, 25, 0)) !important;
+}
+:root[data-theme="dark"] .to-gray-50 {
+  --tw-gradient-to: var(--bg) !important;
+}
+:root[data-theme="dark"] .from-cream {
+  --tw-gradient-from: var(--surface-2) !important;
+  --tw-gradient-stops: var(--tw-gradient-from),
+    var(--tw-gradient-to, rgba(27, 22, 25, 0)) !important;
+}
+:root[data-theme="dark"] .to-blush\/20 {
+  --tw-gradient-to: rgba(27, 22, 25, 0.9) !important;
+}
+:root[data-theme="dark"] .bg-gradient-to-b {
+  background-image: linear-gradient(
+    to bottom,
+    var(--tw-gradient-stops)
+  ) !important;
+}
+
+/* Arbitrary color class overrides used in markup */
+:root[data-theme="dark"] .text-\[\#230007\] {
+  color: var(--text) !important;
+}
+:root[data-theme="dark"] .border-\[\#230007\]\/20 {
+  border-color: var(--border) !important;
+}
+:root[data-theme="dark"] .bg-\[\#230007\]\/10 {
+  background-color: rgba(27, 22, 25, 0.6) !important;
+}
+:root[data-theme="dark"] .border-white\/20 {
+  border-color: var(--border) !important;
+}
+
+/* Cards and containers from style.css */
+:root[data-theme="dark"] .container {
+  background: rgba(27, 22, 25, 0.7);
+  border-color: var(--border);
+}
+
+:root[data-theme="dark"] .cta-section {
+  background-color: rgba(27, 22, 25, 0.85);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+:root[data-theme="dark"] .cta-section h2 {
+  color: var(--accent-amber);
+  background: rgba(27, 22, 25, 0.6);
+  border-color: rgba(249, 160, 63, 0.25);
+}
+
+:root[data-theme="dark"] .cta-section p {
+  color: var(--text);
+  background: rgba(27, 22, 25, 0.45);
+  border-color: var(--border);
+}
+
+/* Navbar and menu */
+:root[data-theme="dark"] .navbar {
+  background-color: rgba(24, 16, 18, 0.9);
+  border-color: var(--border);
+}
+:root[data-theme="dark"] .navbar-links.open {
+  background: rgba(24, 16, 18, 0.98);
+  border-color: var(--border);
+}
+:root[data-theme="dark"] .navbar-toggle {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: var(--text);
+}
+
+/* Footer */
+:root[data-theme="dark"] .footer {
+  background-color: rgba(21, 18, 20, 0.9);
+  color: var(--text);
+  border-color: var(--border);
+}
+:root[data-theme="dark"] .footer-brand {
+  background: rgba(40, 28, 34, 0.45);
+}
+:root[data-theme="dark"] .footer-brand:hover {
+  background: rgba(40, 28, 34, 0.6);
+}
+:root[data-theme="dark"] .footer-links a {
+  background: rgba(164, 6, 6, 0.15);
+  color: var(--text);
+}
+:root[data-theme="dark"] .footer-links a:hover {
+  background: rgba(164, 6, 6, 0.9);
+  color: #fff;
+}
+:root[data-theme="dark"] .footer-bottom {
+  color: rgba(236, 235, 237, 0.7);
+  border-top-color: var(--border);
+}
+
+/* Hero section */
+:root[data-theme="dark"] .hero-content {
+  color: var(--text);
+  background: rgba(24, 16, 18, 0.7);
+  border-color: var(--border);
+}
+:root[data-theme="dark"] .hero-content h1,
+:root[data-theme="dark"] .hero-content h2 {
+  color: var(--accent-amber);
+  background: rgba(24, 16, 18, 0.6);
+}
+:root[data-theme="dark"] .hero-content p {
+  color: var(--text);
+  background: rgba(24, 16, 18, 0.45);
+}
+/* Forms */
+:root[data-theme="dark"] .form-control {
+  background-color: rgba(33, 26, 29, 0.8);
+  color: var(--text);
+  border-color: var(--border);
+}
+:root[data-theme="dark"] .form-control::placeholder {
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+:root[data-theme="dark"] .form-control:disabled {
+  background-color: rgba(33, 26, 29, 0.4);
+  color: var(--text-muted);
+}
+
+/* FAQ page components */
+:root[data-theme="dark"] main.faq-wrapper {
+  color: var(--text);
+}
+:root[data-theme="dark"] .faq-header {
+  background: rgba(24, 16, 18, 0.85);
+  color: var(--text);
+}
+:root[data-theme="dark"] .faq-tag {
+  background: #8b0000;
+  color: #f5f5f5;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+:root[data-theme="dark"] .faq-tag.active {
+  background: var(--accent-amber);
+  color: #230007;
+}
+:root[data-theme="dark"] details.faq-item {
+  background: rgba(27, 22, 25, 0.85);
+  border-color: var(--border);
+}
+:root[data-theme="dark"] details.faq-item summary {
+  color: var(--text);
+}
+:root[data-theme="dark"] details.faq-item p {
+  color: var(--text-muted);
+}
+
+/* Auth container (login/signup) */
+:root[data-theme="dark"] .auth-container {
+  background: rgba(27, 22, 25, 0.75);
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+}
+:root[data-theme="dark"] #loginView h3,
+:root[data-theme="dark"] #signupView h3 {
+  color: var(--text);
+}
+:root[data-theme="dark"] #loginView small,
+:root[data-theme="dark"] #signupView small {
+  color: var(--text-muted);
+}
+:root[data-theme="dark"] #loginView a,
+:root[data-theme="dark"] #signupView a {
+  color: var(--accent-amber);
+}
+:root[data-theme="dark"] #loginView a:hover,
+:root[data-theme="dark"] #signupView a:hover {
+  color: var(--accent-red);
+}
+
+/* Bottom bar component (overrides inline light styles) */
+:root[data-theme="dark"] site-bottom-bar footer {
+  background: linear-gradient(
+    180deg,
+    rgba(26, 18, 20, 0.97) 0%,
+    rgba(14, 8, 10, 0.99) 100%
+  ) !important;
+  border-top: 1px solid var(--border) !important;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.6), 0 -2px 8px rgba(0, 0, 0, 0.4) !important;
+}
+:root[data-theme="dark"] site-bottom-bar .nav-item {
+  color: #e5e7eb !important;
+}
+:root[data-theme="dark"] site-bottom-bar .nav-item.active {
+  background: linear-gradient(
+    135deg,
+    rgba(164, 6, 6, 0.25) 0%,
+    rgba(35, 0, 7, 0.2) 100%
+  );
+  box-shadow: 0 4px 12px rgba(164, 6, 6, 0.35);
+  color: #f9a03f !important;
+}
+
+/* Review form overrides */
+:root[data-theme="dark"] #reviewForm {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+:root[data-theme="dark"] #reviewForm .form-title {
+  color: var(--accent-amber);
+}
+:root[data-theme="dark"] #reviewForm label {
+  color: var(--text);
+}
+:root[data-theme="dark"] #reviewForm input[disabled],
+:root[data-theme="dark"] #reviewForm select,
+:root[data-theme="dark"] #reviewForm textarea {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+:root[data-theme="dark"] #reviewForm input[disabled] {
+  color: var(--text-muted);
+}
+:root[data-theme="dark"] #reviewForm textarea::placeholder {
+  color: var(--text-muted);
+}
+:root[data-theme="dark"] #reviewForm button[type="submit"] {
+  background: var(--accent-red);
+  color: #fff;
+  border: 1px solid var(--border);
+}
+:root[data-theme="dark"] #reviewForm button[type="submit"]:hover {
+  background: #7e0404;
+}
+
+/* Profile page specifics */
+:root[data-theme="dark"] main[data-page="Profile"],
+:root[data-theme="dark"] body[data-page="Profile"] main {
+  background: transparent !important;
+}
+:root[data-theme="dark"] .profile-card {
+  background: #111827;
+}
+:root[data-theme="dark"] #profileForm input {
+  background: #0f141a;
+  color: #e5e7eb;
+  border-color: #374151;
+}
+
+/* Generic links */
+:root[data-theme="dark"] a {
+  color: #f3f4f6;
+}
+:root[data-theme="dark"] a:hover {
+  color: #f9a03f;
+}
+
+/* Tasks pages (tasks.css) */
+:root[data-theme="dark"] .page-body {
+  background-color: var(--bg) !important;
+}
+:root[data-theme="dark"] .events-container h2 {
+  color: var(--text) !important;
+}
+:root[data-theme="dark"] .page-form {
+  color: var(--text) !important;
+}
+:root[data-theme="dark"] .page-form input,
+:root[data-theme="dark"] .page-form select {
+  background-color: var(--surface-1) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+:root[data-theme="dark"] .card {
+  background-color: rgba(27, 22, 25, 0.9) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+:root[data-theme="dark"] .col:hover {
+  background-color: #241a1e !important;
+}
+
+/* Dark mode toggle styling */
+:root[data-theme="dark"] .from-gray-50 {
+  --tw-gradient-from: var(--surface-2) !important;
+  --tw-gradient-stops: var(--tw-gradient-from),
+    var(--tw-gradient-to, rgba(27, 22, 25, 0)) !important;
+}
+:root[data-theme="dark"] .to-gray-100 {
+  --tw-gradient-to: var(--surface-1) !important;
+}
+:root[data-theme="dark"] .border-gray-200 {
+  border-color: var(--border) !important;
+}
+:root[data-theme="dark"] .text-gray-700 {
+  color: var(--text) !important;
+}
