@@ -1,6 +1,9 @@
 import { auth, db } from "./firebaseConfig.js";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { createLoadingSpinner } from "./loader.js"; // import loader function
+const loader = createLoadingSpinner(); //set variable to loader
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const nameInput = document.getElementById("nameInput");
@@ -23,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
+      loader.show()
       // Show UID in the User ID field
       userIdInput.value = user.uid;
 
@@ -51,6 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
       document.documentElement.setAttribute("data-theme", "light");
       applyThemeLabel();
     }
+    finally{
+      loader.hide()
+    }
   });
 
   // -------------------------------------------------------------
@@ -75,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
+      loader.show()
       const name = nameInput.value;
       const school = schoolInput.value;
       const city = cityInput.value;
@@ -92,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error updating profile:", err);
       alert("Failed to save profile");
     }
+    finally{loader.hide()}
   });
 
   // -------------------------------------------------------------
@@ -99,10 +108,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // -------------------------------------------------------------
   logoutButton.addEventListener("click", async () => {
     try {
+      loader.show()
       await signOut(auth);
       window.location.href = "index.html";
     } catch (err) {
       console.error("Logout failed:", err);
+    } finally{
+      loader.hide()
     }
   });
 

@@ -30,7 +30,7 @@
               cream: "#ffffff",
               blush: "#F5CAC3",
               teal: "#84A59D",
-              coral: "#F28482",
+              coral: "#F9A03F",
             },
           },
         },
@@ -40,15 +40,20 @@
     <!-- Page Script -->
     <script type="module" src="/src/review.js"></script>
 
-    <!-- Shared Styles (same as Edit Task) -->
+    <!-- Shared Styles -->
     <link rel="stylesheet" href="./src/styles/tasks.css" />
+
     <style>
-      /* Consistent title style */
       .form-title {
-        font-size: 1.25rem;
-        font-weight: 600;
+        font-size: 1.35rem;
+        font-weight: 700;
         color: #333;
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
+      }
+      .sub-info {
+        font-size: 0.95rem;
+        color: #555;
+        margin-bottom: 1.5rem;
       }
     </style>
     <script type="module" src="/src/components/site-loader.js"></script>
@@ -75,9 +80,9 @@
         </div>
 
         <!-- Rating -->
-        <div class="col">
-          <label for="rating">Rating:</label>
-          <select id="rating" name="rating">
+        <div class="col mb-3">
+          <label for="rating" class="block mb-1 font-medium">Rating:</label>
+          <select id="rating" name="rating" class="w-full border px-3 py-2 rounded">
             <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
             <option value="4">⭐⭐⭐⭐ Very Good</option>
             <option value="3">⭐⭐⭐ Good</option>
@@ -87,22 +92,43 @@
         </div>
 
         <!-- Feedback -->
-        <div class="col">
-          <label for="feedback">Comments / Suggestions:</label>
+        <div class="col mb-4">
+          <label for="feedback" class="block mb-1 font-medium">Comments / Suggestions:</label>
           <textarea
             id="feedback"
             class="w-full border px-3 py-2 rounded"
             rows="4"
-            placeholder="Let us know what you think!"
+            placeholder="Tell us what we did well, or how we can improve!"
           ></textarea>
         </div>
 
         <!-- Submit Button -->
-        <div class="btn-save">
-          <button type="submit">Submit Review</button>
+        <div class="btn-save text-center">
+          <button type="submit" class="bg-teal-600 hover:bg-teal-500 text-white px-6 py-2 rounded-lg transition">
+            Submit Review
+          </button>
         </div>
       </form>
     </main>
+
+    <!-- ⭐ Reusable Tailwind Modal -->
+    <div
+      id="feedbackModal"
+      class="fixed inset-0 bg-black/40 flex items-center justify-center hidden opacity-0 pointer-events-none transition-all z-50"
+    >
+      <div
+        id="feedbackModalContent"
+        class="bg-white rounded-xl p-6 w-full max-w-md shadow-lg text-center flex flex-col items-center"
+      >
+        <h2 id="feedbackModalTitle" class="text-lg font-semibold mb-4">Title</h2>
+        <p id="feedbackModalMessage" class="text-gray-700 mb-6">Message</p>
+        <div
+          id="feedbackModalButtons"
+          class="flex gap-4 w-full justify-center"
+        ></div>
+      </div>
+    </div>
+
 
     <site-bottom-bar></site-bottom-bar>
   </body>
