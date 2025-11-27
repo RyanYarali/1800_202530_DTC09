@@ -5,6 +5,7 @@ import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("editForm");
   const deleteBtn = document.getElementById("delete");
+  const copyBtn = document.getElementById("copyGroupId");
 
   onAuthStateChanged(auth, async (user) => {
     if (!user) {
@@ -31,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("description").value = group.description || "";
         document.getElementById("groupID").innerHTML = GroupID || "";
         if (user.uid != group.uid) {
-          form.className += ", disabled";
+          form.classList.add("disabled");
           console.log(user.uid)
         }
       } else {
@@ -40,6 +41,27 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } catch (err) {
       console.error("Error loading group:", err);
+    }
+
+    if (copyBtn) {
+      copyBtn.disabled = false;
+      copyBtn.style.pointerEvents = "auto";
+      copyBtn.addEventListener("click", async () => {
+        const text = document.getElementById("groupID").textContent.trim();
+        if (!text) return;
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(text);
+          } else {
+            fallbackCopyTextToClipboard(text);
+          }
+          const prior = copyBtn.textContent;
+          copyBtn.textContent = "Copied!";
+          setTimeout(() => (copyBtn.textContent = prior), 1400);
+        } catch (err) {
+          fallbackCopyTextToClipboard(text);
+        }
+      });
     }
 
     form.addEventListener("submit", async (e) => {
@@ -68,4 +90,20 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  function fallbackCopyTextToClipboard(text) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+      document.execCommand("copy");
+    } catch (err) {
+      console.error("Fallback: Oops, unable to copy", err);
+    } finally {
+      document.body.removeChild(textArea);
+    }
+  }
 });
