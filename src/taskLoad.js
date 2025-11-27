@@ -91,12 +91,12 @@ onAuthReady(async (user) => {
           }
         }
         card.innerHTML = `
-          <p>${task.course || "No course"}</p>
-          <p>${task.name || "Untitled task"}</p>
-          <p>${task.priority || "Normal"}</p>
+          <p style="grid-column: 1;">${task.course || "No course"}</p>
+          <p style="grid-column: 2;">${task.name || "Untitled task"}</p>
+          <p style="grid-column: 3;">${task.priority || "Normal"}</p>
 
           <!-- Checkbox icons -->
-          <svg class="task-checkbox" id="unchecked" viewBox="0 0 100 100"
+          <svg class="task-checkbox" id="unchecked" viewBox="0 0 100 100" style="grid-column: 4;"
                xmlns="http://www.w3.org/2000/svg" width="30" height="30">
             <circle cx="50" cy="50" r="35" fill="none" stroke="#A40606" stroke-width="3"/>
           </svg>

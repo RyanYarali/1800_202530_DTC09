@@ -91,23 +91,18 @@ onAuthReady(async (user) => {
             card.classList.add("card");
             if (task.name.length > 11 || task.course.length > 11) {
                 if (task.name.length > 11) {
-                    task.name = task.name.substring(0,8) + "...";
+                    task.name = task.name.substring(0, 8) + "...";
                 }
                 if (task.course.length > 11) {
-                    task.course = task.course.substring(0,8) + "...";
+                    task.course = task.course.substring(0, 8) + "...";
                 }
             }
 
             card.innerHTML = `
-                <div class="col">
-                    <h2>Due: ${task.date || "No due date"}</h2>
-                    <div class="card">
-                        <p>${task.course || "No course"}</p>
-                        <p>${task.name || "Untitled task"}</p>
-                        <p>${task.priority || "Normal"}</p>
-                    </div>
-                </div>
-            `;
+          <p style="grid-column: 1;">${task.course || "No course"}</p>
+          <p style="grid-column: 2;">${task.name || "Untitled task"}</p>
+          <p style="grid-column: 3;">${task.priority || "Normal"}</p>
+          `;
 
             card.addEventListener("click", () => {
                 localStorage.setItem("selectedTaskId", task.id);
@@ -145,9 +140,9 @@ onAuthReady(async (user) => {
     <div class="col">
         <h2>Due: ${task.date || "No due date"}</h2>
         <div class="card">
-            <p>${task.course || "No course"}</p>
-            <p>${task.name || "Untitled task"}</p>
-            <p>${task.priority || "Normal"}</p>
+          <p style="grid-column: 1;">${task.course || "No course"}</p>
+          <p style="grid-column: 2;">${task.name || "Untitled task"}</p>
+          <p style="grid-column: 3;">${task.priority || "Normal"}</p>
         </div>
     </div>
     `;
@@ -156,7 +151,7 @@ onAuthReady(async (user) => {
             localStorage.setItem("selectedTaskId", doc.id);
             window.location.href = "taskDetailGroup.html";
         });
-        
+
         container.appendChild(card);
     });
     document.getElementById("leaveGroup").addEventListener("click", async () => {
