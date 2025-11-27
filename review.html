@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leave a Review</title>
+
+    <!-- Instant theme application (no flash) -->
+    <script>
+      (function () {
+        const cachedTheme = sessionStorage.getItem("theme");
+        if (cachedTheme === "dark" || cachedTheme === "light") {
+          document.documentElement.setAttribute("data-theme", cachedTheme);
+        }
+      })();
+    </script>
+
+    <!-- Navbar + Bottom Bar -->
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-bottom-bar.js"></script>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              mustard: "#F9A03F",
+              cream: "#ffffff",
+              blush: "#F5CAC3",
+              teal: "#84A59D",
+              coral: "#F9A03F",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Page Script -->
+    <script type="module" src="/src/review.js"></script>
+
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="./src/styles/tasks.css" />
+
+    <style>
+      .form-title {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 0.75rem;
+      }
+      .sub-info {
+        font-size: 0.95rem;
+        color: #555;
+        margin-bottom: 1.5rem;
+      }
+    </style>
+    <script type="module" src="/src/components/site-loader.js"></script>
+  </head>
+
+  <body class="page-body" data-page="Review">
+    <site-loader></site-loader>
+    <site-navbar></site-navbar>
+
+    <main>
+      <form id="reviewForm" class="page-form">
+        <h2 class="form-title">Leave a Review</h2>
+
+        <!-- Name -->
+        <div class="col">
+          <label for="nameInput">Name:</label>
+          <input type="text" id="nameInput" disabled class="bg-gray-100" />
+        </div>
+
+        <!-- Email -->
+        <div class="col">
+          <label for="emailInput">Email:</label>
+          <input type="email" id="emailInput" disabled class="bg-gray-100" />
+        </div>
+
+        <!-- Rating -->
+        <div class="col mb-3">
+          <label for="rating" class="block mb-1 font-medium">Rating:</label>
+          <select id="rating" name="rating" class="w-full border px-3 py-2 rounded">
+            <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+            <option value="4">⭐⭐⭐⭐ Very Good</option>
+            <option value="3">⭐⭐⭐ Good</option>
+            <option value="2">⭐⭐ Needs Improvement</option>
+            <option value="1">⭐ Poor</option>
+          </select>
+        </div>
+
+        <!-- Feedback -->
+        <div class="col mb-4">
+          <label for="feedback" class="block mb-1 font-medium">Comments / Suggestions:</label>
+          <textarea
+            id="feedback"
+            class="w-full border px-3 py-2 rounded"
+            rows="4"
+            placeholder="Tell us what we did well, or how we can improve!"
+          ></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="btn-save text-center">
+          <button type="submit" class="bg-teal-600 hover:bg-teal-500 text-white px-6 py-2 rounded-lg transition">
+            Submit Review
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <!-- ⭐ Reusable Tailwind Modal -->
+    <div
+      id="feedbackModal"
+      class="fixed inset-0 bg-black/40 flex items-center justify-center hidden opacity-0 pointer-events-none transition-all z-50"
+    >
+      <div
+        id="feedbackModalContent"
+        class="bg-white rounded-xl p-6 w-full max-w-md shadow-lg text-center flex flex-col items-center"
+      >
+        <h2 id="feedbackModalTitle" class="text-lg font-semibold mb-4">Title</h2>
+        <p id="feedbackModalMessage" class="text-gray-700 mb-6">Message</p>
+        <div
+          id="feedbackModalButtons"
+          class="flex gap-4 w-full justify-center"
+        ></div>
+      </div>
+    </div>
+
+
+    <site-bottom-bar></site-bottom-bar>
+  </body>
+</html>

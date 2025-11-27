@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Group</title>
+    <!-- Instant theme application (no flash) -->
+    <script>
+      (function() {
+        const cachedTheme = sessionStorage.getItem("theme");
+        if (cachedTheme === "dark" || cachedTheme === "light") {
+          document.documentElement.setAttribute("data-theme", cachedTheme);
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="./src/styles/tasks.css" />
     <script type="module" src="/src/components/site-navbar.js"></script>
     <script type="module" src="/src/components/site-bottom-bar.js"></script>
@@ -23,9 +32,11 @@
         },
       };
     </script>
+    <script type="module" src="/src/components/site-loader.js"></script>
     <script type="module" src="./src/groups/groupsEdit.js"></script>
   </head>
   <body class="page-body" data-page="Group Details">
+    <site-loader></site-loader>
     <site-navbar></site-navbar>
 
     <main>
