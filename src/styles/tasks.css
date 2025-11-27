@@ -148,7 +148,10 @@ div {
 
 .card {
   border-radius: 50px;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 35% 35% 20% 10%;
+  text-align: center;
+  place-content: center;
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);

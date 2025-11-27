@@ -8,6 +8,7 @@ document
 	.getElementById("taskForm")
 	.addEventListener("submit", function (event) {
 		event.preventDefault();
+		// Create new task object
 		const newTask = {
 			course: document.getElementById("course").value,
 			name: document.getElementById("name").value,

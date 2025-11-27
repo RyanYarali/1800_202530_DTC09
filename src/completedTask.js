@@ -22,14 +22,21 @@ function renderCompletedTasks(container, tasksByDate, user) {
     tasksByDate[date].forEach((task) => {
       const card = document.createElement("div");
       card.className = "card";
-
+      if (task.name.length > 11 || task.course.length > 11) {
+        if (task.name.length > 11) {
+          task.name = task.name.substring(0,8) + "...";
+        }
+        if (task.course.length > 11) {
+          task.course = task.course.substring(0,8) + "...";
+        }
+      }
       card.innerHTML = `
-        <p>${task.course || "No course"}</p>
-        <p>${task.name || "Untitled task"}</p>
-        <p>${task.priority || "Normal"}</p>
+          <p style="grid-column: 1;">${task.course || "No course"}</p>
+          <p style="grid-column: 2;">${task.name || "Untitled task"}</p>
+          <p style="grid-column: 3;">${task.priority || "Normal"}</p>
 
         <!-- Checked icon -->
-        <svg class="task-checkbox" id="checked" viewBox="0 0 100 100"
+        <svg class="task-checkbox" id="checked" viewBox="0 0 100 100" style="grid-column: 4;"
              xmlns="http://www.w3.org/2000/svg" width="30" height="30"
              style="cursor:pointer;">
           <circle cx="50" cy="50" r="35" fill="#A40606" stroke="#A40606" stroke-width="3"/>
@@ -42,7 +49,7 @@ function renderCompletedTasks(container, tasksByDate, user) {
         </svg>
 
         <!-- Empty circle (for reverting) -->
-        <svg class="task-checkbox hidden" id="unchecked" viewBox="0 0 100 100"
+        <svg class="task-checkbox hidden" id="unchecked" viewBox="0 0 100 100" style="grid-column: 4;"
              xmlns="http://www.w3.org/2000/svg" width="30" height="30"
              style="cursor:pointer;">
           <circle cx="50" cy="50" r="35" fill="none" stroke="#A40606" stroke-width="3"/>

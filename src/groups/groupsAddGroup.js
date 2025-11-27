@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("joinGroupForm");
     const input = document.getElementById("groupIdInput");
     const msg = document.getElementById("joinMessage");
-
+    // Functions to open and close overlay
     function openOverlay() {
         msg.textContent = "";
         input.value = "";
@@ -79,4 +79,3 @@ document.addEventListener("DOMContentLoaded", () => {
         }, { onlyOnce: true });
     });
 });
-// ...existing code...

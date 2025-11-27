@@ -17,7 +17,6 @@ onAuthReady(async (user) => {
 
     const GroupID = localStorage.getItem("selectedGroupID");
 
-    // ⭐ ADDED — FILTER BAR UI
     const filterBar = document.createElement("div");
     filterBar.className = "flex flex-wrap gap-4 mb-4 justify-center";
 
@@ -35,19 +34,17 @@ onAuthReady(async (user) => {
     `;
 
     container.before(filterBar);
-    // ⭐ END ADDED
 
 
-    // Reference to the current logged-in user's 'tasks' collection in Firestore
+    // Reference to the current group's tasks collection
     const tasksCollectionRef = collection(db, `groups/${GroupID}/tasks`);
     const querySnapshot = await getDocs(tasksCollectionRef);
 
-    // ⭐ ADDED — Convert docs to array
+    // Convert Firestore documents to JS array of task objects
     let allTasks = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data()
     }));
-    // ⭐ END
 
 
     // Sort tasks by date (ascending)
@@ -59,7 +56,7 @@ onAuthReady(async (user) => {
         return dateA - dateB
     });
 
-    // ⭐ ADDED — Populate course dropdown
+    // Create unique course options for filter
     const courseSelect = document.getElementById("filterCourse");
     const uniqueCourses = [...new Set(allTasks.map((t) => t.course).filter(Boolean))];
 
@@ -69,10 +66,9 @@ onAuthReady(async (user) => {
         opt.textContent = course;
         courseSelect.appendChild(opt);
     });
-    // ⭐ END
 
 
-    // ⭐ ADDED — FILTER FUNCTION USING YOUR ORIGINAL RENDER CODE
+    // Apply filters and re-render tasks
     function applyFilters() {
         const selectedCourse = courseSelect.value;
         const selectedPriority = document.getElementById("filterPriority").value;
@@ -83,23 +79,25 @@ onAuthReady(async (user) => {
             return matchCourse && matchPriority;
         });
 
-        // Re-render using your existing card logic
         container.innerHTML = "";
-
+        // Render filtered tasks
         filtered.forEach((task) => {
             const card = document.createElement("div");
             card.classList.add("card");
+            if (task.name.length > 11 || task.course.length > 11) {
+                if (task.name.length > 11) {
+                    task.name = task.name.substring(0, 8) + "...";
+                }
+                if (task.course.length > 11) {
+                    task.course = task.course.substring(0, 8) + "...";
+                }
+            }
 
             card.innerHTML = `
-                <div class="col">
-                    <h2>Due: ${task.date || "No due date"}</h2>
-                    <div class="card">
-                        <p>${task.course || "No course"}</p>
-                        <p>${task.name || "Untitled task"}</p>
-                        <p>${task.priority || "Normal"}</p>
-                    </div>
-                </div>
-            `;
+          <p style="grid-column: 1;">${task.course || "No course"}</p>
+          <p style="grid-column: 2;">${task.name || "Untitled task"}</p>
+          <p style="grid-column: 3;">${task.priority || "Normal"}</p>
+          `;
 
             card.addEventListener("click", () => {
                 localStorage.setItem("selectedTaskId", task.id);
@@ -109,13 +107,11 @@ onAuthReady(async (user) => {
             container.appendChild(card);
         });
     }
-    // ⭐ END ADDED
 
 
-    // ⭐ ADDED — Filter triggers
+    // Filter change listeners
     courseSelect.addEventListener("change", applyFilters);
     document.getElementById("filterPriority").addEventListener("change", applyFilters);
-    // ⭐ END
 
 
 
@@ -125,25 +121,33 @@ onAuthReady(async (user) => {
         const task = doc.data();
         const card = document.createElement("div");
         card.classList.add("card");
-
+        if (task.name.length > 13 || task.course.length > 13) {
+            if (task.name.length > 13) {
+                task.name = task.name.substring(0, 10) + "...";
+            }
+            if (task.course.length > 13) {
+                task.course = task.course.substring(0, 10) + "...";
+            }
+        }
         card.innerHTML = `
     <div class="col">
         <h2>Due: ${task.date || "No due date"}</h2>
         <div class="card">
-            <p>${task.course || "No course"}</p>
-            <p>${task.name || "Untitled task"}</p>
-            <p>${task.priority || "Normal"}</p>
+          <p style="grid-column: 1;">${task.course || "No course"}</p>
+          <p style="grid-column: 2;">${task.name || "Untitled task"}</p>
+          <p style="grid-column: 3;">${task.priority || "Normal"}</p>
         </div>
     </div>
     `;
-
+    // Redirect to detail
         card.addEventListener("click", () => {
             localStorage.setItem("selectedTaskId", doc.id);
             window.location.href = "taskDetailGroup.html";
         });
-        
+
         container.appendChild(card);
     });
+    // Leave group button handler
     document.getElementById("leaveGroup").addEventListener("click", async () => {
         try {
             await deleteDoc(doc(db, `users/${user.uid}/groups/${GroupID}`));
