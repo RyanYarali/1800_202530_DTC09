@@ -82,7 +82,14 @@ onAuthReady(async (user) => {
       tasksByDate[date].forEach((task) => {
         const card = document.createElement("div");
         card.className = "card";
-
+        if (task.name.length > 11 || task.course.length > 11) {
+          if (task.name.length > 11) {
+            task.name = task.name.substring(0, 8) + "...";
+          }
+          if (task.course.length > 11) {
+            task.course = task.course.substring(0, 8) + "...";
+          }
+        }
         card.innerHTML = `
           <p>${task.course || "No course"}</p>
           <p>${task.name || "Untitled task"}</p>
