@@ -150,7 +150,7 @@ onAuthReady(async (user) => {
         container.appendChild(card);
       });
     });
-
+    // Show message if no tasks match filters
     if (tasksToShow.length === 0) {
       const empty = document.createElement("p");
       empty.textContent = "No tasks match the selected filters.";
@@ -158,11 +158,9 @@ onAuthReady(async (user) => {
       container.appendChild(empty);
     }
   }
-
-  // --- 🔹 Initial render
   renderTasks(allTasks);
 
-  // --- 🔹 Filter logic
+  // FIlter application function
   function applyFilters() {
     const selectedCourse = courseSelect.value;
     const selectedPriority = prioritySelect.value;

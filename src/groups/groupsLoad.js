@@ -38,6 +38,7 @@ onAuthReady(async (user) => {
     const course = groupData.course || "No course";
     const description = groupData.description || "No description";
 
+    // Create group card
     const card = document.createElement("div");
     card.classList.add("card");
     card.innerHTML = `

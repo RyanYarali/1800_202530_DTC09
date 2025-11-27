@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error("Error loading task:", err);
             }
         }
-
+        // Populate the select dropdown with tasks
         for (const taskDoc of querySnapshot.docs) {
             const taskData = taskDoc.data();
             const taskOption = document.createElement("option");
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 date: document.getElementById("date").value,
                 priority: document.getElementById("priority").value,
             };
-
+            // Update task in Firestore
             if (user) {
                 try {
                     const GroupID = localStorage.getItem("selectedGroupID");

@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const groupRef = doc(db, "groups", GroupID);
-
+    // Load group into form
     try {
       const snap = await getDoc(groupRef);
       if (snap.exists()) {
@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("course").value = group.course || "";
         document.getElementById("description").value = group.description || "";
         document.getElementById("groupID").innerHTML = GroupID || "";
+        // Disable form if not group owner
         if (user.uid != group.uid) {
           form.classList.add("disabled");
           console.log(user.uid)
@@ -42,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (err) {
       console.error("Error loading group:", err);
     }
-
+    // Copy Group ID button handler
     if (copyBtn) {
       copyBtn.disabled = false;
       copyBtn.style.pointerEvents = "auto";
@@ -90,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-
+  // Fallback copy function
   function fallbackCopyTextToClipboard(text) {
     const textArea = document.createElement("textarea");
     textArea.value = text;

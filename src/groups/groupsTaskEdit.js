@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         date: document.getElementById("date").value,
         priority: document.getElementById("priority").value,
       };
-
+      // Update task in Firestore
       if (user) {
         try {
           const userTasks = collection(db, "users", user.uid, "tasks");
@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "groupTasks.html";
     })
 
+      // Disable delete button if not task owner
     if (user.uid != doc(db, "groups", groupId).uid) {
       deleteBtn.classList.add("disabled");
       console.log(user.uid)
