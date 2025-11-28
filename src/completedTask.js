@@ -21,7 +21,7 @@ function renderCompletedTasks(container, tasksByDate, user) {
     // Each task card
     tasksByDate[date].forEach((task) => {
       const card = document.createElement("div");
-      card.className = "card";
+      card.className = "card-task";
       if (task.name.length > 11 || task.course.length > 11) {
         if (task.name.length > 11) {
           task.name = task.name.substring(0,8) + "...";

@@ -146,12 +146,25 @@ div {
   width: 100%;
 }
 
-.card {
+.card-task {
   border-radius: 50px;
   display: grid;
   grid-template-columns: 35% 35% 20% 10%;
   text-align: center;
   place-content: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 15px;
+  transition: all 0.3s ease;
+  margin: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+}
+
+.card {
+  border-radius: 50px;
+  justify-content: space-around;
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
