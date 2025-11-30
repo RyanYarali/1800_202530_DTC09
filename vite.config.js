@@ -5,7 +5,6 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 
 export default defineConfig({
-    base: "/1800_202530_DTC09/",
     build: {
         rollupOptions: {
             input: {
