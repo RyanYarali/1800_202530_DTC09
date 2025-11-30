@@ -44,7 +44,7 @@ onAuthReady(async (user) => {
     card.innerHTML = `
       <div class="col">
         <h2>${name}</h2>
-        <div class="card">
+        <div class="card" style="text-align: center;">
           <p>${course}</p>
           <p>${description}</p>
         </div>
