@@ -38,12 +38,13 @@ onAuthReady(async (user) => {
     const course = groupData.course || "No course";
     const description = groupData.description || "No description";
 
+    // Create group card
     const card = document.createElement("div");
     card.classList.add("card");
     card.innerHTML = `
       <div class="col">
         <h2>${name}</h2>
-        <div class="card">
+        <div class="card" style="text-align: center;">
           <p>${course}</p>
           <p>${description}</p>
         </div>

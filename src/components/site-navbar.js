@@ -3,6 +3,10 @@ import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "/src/firebaseConfig.js";
 
+// Import CSS files so Vite can process them for production builds
+import "../styles/style.css";
+import "../styles/dark.css";
+
 class SiteNavbar extends HTMLElement {
   constructor() {
     super();
@@ -18,8 +22,6 @@ class SiteNavbar extends HTMLElement {
   renderNavbar() {
     this.innerHTML = `
       <!-- Navbar: single source of truth -->
-      <link rel="stylesheet" href="./src/styles/style.css" />
-      <link rel="stylesheet" href="./src/styles/dark.css" />
       <nav class="navbar">
         <div class="nav-left" style="display:flex; align-items:center; gap:1rem;">
           <button class="navbar-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>

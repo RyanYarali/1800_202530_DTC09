@@ -81,15 +81,22 @@ onAuthReady(async (user) => {
 
       tasksByDate[date].forEach((task) => {
         const card = document.createElement("div");
-        card.className = "card";
-
+        card.className = "card-task";
+        if (task.name.length > 11 || task.course.length > 11) {
+          if (task.name.length > 11) {
+            task.name = task.name.substring(0, 8) + "...";
+          }
+          if (task.course.length > 11) {
+            task.course = task.course.substring(0, 8) + "...";
+          }
+        }
         card.innerHTML = `
-          <p>${task.course || "No course"}</p>
-          <p>${task.name || "Untitled task"}</p>
-          <p>${task.priority || "Normal"}</p>
+          <p style="grid-column: 1;">${task.course || "No course"}</p>
+          <p style="grid-column: 2;">${task.name || "Untitled task"}</p>
+          <p style="grid-column: 3;">${task.priority || "Normal"}</p>
 
           <!-- Checkbox icons -->
-          <svg class="task-checkbox" id="unchecked" viewBox="0 0 100 100"
+          <svg class="task-checkbox" id="unchecked" viewBox="0 0 100 100" style="grid-column: 4;"
                xmlns="http://www.w3.org/2000/svg" width="30" height="30">
             <circle cx="50" cy="50" r="35" fill="none" stroke="#A40606" stroke-width="3"/>
           </svg>
@@ -143,7 +150,7 @@ onAuthReady(async (user) => {
         container.appendChild(card);
       });
     });
-
+    // Show message if no tasks match filters
     if (tasksToShow.length === 0) {
       const empty = document.createElement("p");
       empty.textContent = "No tasks match the selected filters.";
@@ -151,11 +158,9 @@ onAuthReady(async (user) => {
       container.appendChild(empty);
     }
   }
-
-  // --- 🔹 Initial render
   renderTasks(allTasks);
 
-  // --- 🔹 Filter logic
+  // FIlter application function
   function applyFilters() {
     const selectedCourse = courseSelect.value;
     const selectedPriority = prioritySelect.value;
