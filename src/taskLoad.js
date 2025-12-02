@@ -76,6 +76,7 @@ onAuthReady(async (user) => {
 
     Object.keys(tasksByDate).forEach((date) => {
       const dateHeader = document.createElement("h2");
+    dateHeader.className = "text-lg font-semibold mt-4";
       dateHeader.textContent = `Due: ${date}`;
       container.appendChild(dateHeader);
 
