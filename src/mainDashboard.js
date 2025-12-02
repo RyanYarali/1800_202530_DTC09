@@ -26,8 +26,12 @@ async function loadTodaysTasks(user) {
   container.innerHTML = '<p class="text-gray-500">Loading tasks...</p>';
 
   try {
+    // Get today's date in local timezone (device date)
     const today = new Date();
-    const todayString = today.toISOString().split("T")[0];
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+    const todayString = `${year}-${month}-${day}`;
 
     const tasksCollectionRef = collection(db, `users/${user.uid}/tasks`);
     const querySnapshot = await getDocs(tasksCollectionRef);

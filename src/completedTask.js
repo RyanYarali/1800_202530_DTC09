@@ -1,7 +1,14 @@
 // Import helper to run code only after Firebase Authentication is ready
 import { onAuthReady } from "./authentication.js";
 // Import Firestore functions for reading and writing data
-import { collection, getDocs, doc, deleteDoc, setDoc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  doc,
+  deleteDoc,
+  setDoc,
+  writeBatch,
+} from "firebase/firestore";
 // Import initialized Firestore database instance
 import { db } from "./firebaseConfig.js";
 import { createLoadingSpinner } from "./loader.js"; // import l
@@ -78,7 +85,9 @@ function renderCompletedTasks(container, tasksByDate, user) {
             ...task,
             restoredAt: new Date().toISOString(),
           });
-          await deleteDoc(doc(db, `users/${user.uid}/completedTasks/${task.id}`));
+          await deleteDoc(
+            doc(db, `users/${user.uid}/completedTasks/${task.id}`)
+          );
 
           console.log(`Task "${task.name}" marked as pending again.`);
           setTimeout(() => {
@@ -113,31 +122,40 @@ onAuthReady(async (user) => {
   const container = document.getElementById("events-container");
   container.innerHTML = "";
 
-  // ✅ Create filter bar at the top
-  const filterBar = document.createElement("div");
-  filterBar.className = "flex flex-wrap gap-4 mb-4 justify-center";
+  // ✅ Create filter bar and delete all button at the top
+  const filterAndDeleteContainer = document.getElementById(
+    "filter-and-delete-container"
+  );
+  filterAndDeleteContainer.className =
+    "flex flex-wrap gap-4 mb-4 justify-center items-center";
 
-  filterBar.innerHTML = `
-    <select id="filterCourse" class="border px-2 py-1 rounded">
+  filterAndDeleteContainer.innerHTML = `
+    <select id="filterCourse" class="border px-3 py-2 rounded text-sm min-w-[140px]">
       <option value="all">All Courses</option>
     </select>
-    <select id="filterPriority" class="border px-2 py-1 rounded">
+    <select id="filterPriority" class="border px-3 py-2 rounded text-sm min-w-[140px]">
       <option value="all">All Priorities</option>
       <option value="High">High</option>
       <option value="Medium">Medium</option>
       <option value="Low">Low</option>
     </select>
+    <button id="deleteAllBtn" class="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded text-sm font-semibold transition-colors duration-200 min-w-[140px]">
+      🗑️ Delete All
+    </button>
   `;
 
-  container.before(filterBar);
-
-  const completedCollectionRef = collection(db, `users/${user.uid}/completedTasks`);
+  const completedCollectionRef = collection(
+    db,
+    `users/${user.uid}/completedTasks`
+  );
   const querySnapshot = await getDocs(completedCollectionRef);
   const allTasks = querySnapshot.docs.map((d) => ({ id: d.id, ...d.data() }));
 
   // --- Fill unique course options ---
   const courseSelect = document.getElementById("filterCourse");
-  const uniqueCourses = [...new Set(allTasks.map((t) => t.course).filter(Boolean))];
+  const uniqueCourses = [
+    ...new Set(allTasks.map((t) => t.course).filter(Boolean)),
+  ];
   uniqueCourses.forEach((course) => {
     const opt = document.createElement("option");
     opt.value = course;
@@ -152,8 +170,10 @@ onAuthReady(async (user) => {
     const selectedPriority = document.getElementById("filterPriority").value;
 
     const filtered = allTasks.filter((task) => {
-      const matchCourse = selectedCourse === "all" || task.course === selectedCourse;
-      const matchPriority = selectedPriority === "all" || task.priority === selectedPriority;
+      const matchCourse =
+        selectedCourse === "all" || task.course === selectedCourse;
+      const matchPriority =
+        selectedPriority === "all" || task.priority === selectedPriority;
       return matchCourse && matchPriority;
     });
 
@@ -171,7 +191,69 @@ onAuthReady(async (user) => {
 
   // --- Filter change listeners ---
   courseSelect.addEventListener("change", filterTasks);
-  document.getElementById("filterPriority").addEventListener("change", filterTasks);
+  document
+    .getElementById("filterPriority")
+    .addEventListener("change", filterTasks);
+
+  // --- Delete All Button ---
+  document
+    .getElementById("deleteAllBtn")
+    .addEventListener("click", async () => {
+      // Get currently filtered tasks
+      const selectedCourse = courseSelect.value;
+      const selectedPriority = document.getElementById("filterPriority").value;
+
+      const filteredTasks = allTasks.filter((task) => {
+        const matchCourse =
+          selectedCourse === "all" || task.course === selectedCourse;
+        const matchPriority =
+          selectedPriority === "all" || task.priority === selectedPriority;
+        return matchCourse && matchPriority;
+      });
+
+      if (filteredTasks.length === 0) {
+        alert("No tasks to delete in current filter.");
+        return;
+      }
+
+      // System confirmation popup
+      const confirmed = confirm(
+        `Delete ${filteredTasks.length} filtered task${
+          filteredTasks.length > 1 ? "s" : ""
+        }? This action cannot be undone.`
+      );
+
+      if (!confirmed) return;
+
+      loader.show();
+
+      try {
+        const batch = writeBatch(db);
+
+        // Add all delete operations to the batch for filtered tasks only
+        filteredTasks.forEach((task) => {
+          const taskRef = doc(
+            db,
+            `users/${user.uid}/completedTasks/${task.id}`
+          );
+          batch.delete(taskRef);
+        });
+
+        // Commit the batch
+        await batch.commit();
+
+        console.log(
+          `Successfully deleted ${filteredTasks.length} completed tasks.`
+        );
+
+        // Reload the page to show updated list
+        window.location.reload();
+      } catch (error) {
+        console.error("Error deleting all tasks:", error);
+        alert("Failed to delete all tasks. Please try again.");
+        loader.hide();
+      }
+    });
 
   // --- Initial render ---
   const tasksByDate = {};
