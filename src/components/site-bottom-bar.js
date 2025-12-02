@@ -5,6 +5,14 @@ class SiteBottomBar extends HTMLElement {
 
     const isActive = (page) => currentPage === page;
 
+    // Check if current page is any group-related page
+    const isGroupPage =
+      currentPage === "groups.html" ||
+      currentPage === "groupCreate.html" ||
+      currentPage === "groupAddTask.html" ||
+      currentPage === "groupDetail.html" ||
+      currentPage === "groupTasks.html";
+
     this.innerHTML = `
 			<link rel="stylesheet" href="./src/styles/style.css" />
 			<style>
@@ -91,10 +99,8 @@ class SiteBottomBar extends HTMLElement {
 						<span class="nav-label">Home</span>
 					</a>
 
-					<a href="groups.html" class="nav-item ${
-            isActive("groups.html") ? "active" : ""
-          }"
-						style="color: ${isActive("groups.html") ? "#A40606" : "#230007"};">
+					<a href="groups.html" class="nav-item ${isGroupPage ? "active" : ""}"
+						style="color: ${isGroupPage ? "#A40606" : "#230007"};">
 						<svg class="nav-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" 
 							xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
 							<path d="M13 20V18C13 15.2386 10.7614 13 8 13C5.23858 13 3 15.2386 3 18V20H13ZM13 20H21V19C21 16.0545 18.7614 14 16 14C14.5867 14 13.3103 14.6255 12.4009 15.6311M11 7C11 8.65685 9.65685 10 8 10C6.34315 10 5 8.65685 5 7C5 5.34315 6.34315 4 8 4C9.65685 4 11 5.34315 11 7ZM18 9C18 10.1046 17.1046 11 16 11C14.8954 11 14 10.1046 14 9C14 7.89543 14.8954 7 16 7C17.1046 7 18 7.89543 18 9Z" 
