@@ -1,10 +1,11 @@
 // taskEdit.js
 import { auth, db } from "/src/firebaseConfig.js";
 import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc, collection, addDoc } from "firebase/firestore";
+import { doc, getDoc, collection, addDoc, deleteDoc } from "firebase/firestore";
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("editForm");
+  const backBtn = document.getElementById("back");
   const deleteBtn = document.getElementById("delete");
 
   onAuthStateChanged(auth, async (user) => {
@@ -51,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
         date: document.getElementById("date").value,
         priority: document.getElementById("priority").value,
       };
-
+      // Update task in Firestore
       if (user) {
         try {
           const userTasks = collection(db, "users", user.uid, "tasks");
@@ -66,8 +67,25 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    deleteBtn.addEventListener("click", () => {
+    backBtn.addEventListener("click", () => {
       window.location.href = "groupTasks.html";
     })
+
+      // Disable delete button if not task owner
+    if (user.uid != doc(db, "groups", groupId).uid) {
+      deleteBtn.classList.add("disabled");
+      console.log(user.uid)
+    }
+
+    deleteBtn.addEventListener("click", async () => {
+      if (!confirm("Are you sure you want to delete this task?")) return;
+      try {
+        await deleteDoc(taskRef);
+        window.location.href = "groupTasks.html";
+      } catch (err) {
+        console.error("Error deleting task:", err);
+        alert("Failed to delete task");
+      }
+    });
   });
 });

@@ -1,9 +1,27 @@
+import styleUrl from "../styles/style.css?url";
+import darkUrl from "../styles/dark.css?url";
 class SiteBottomBar extends HTMLElement {
-  connectedCallback() {
-    const currentPage =
-      window.location.pathname.split("/").pop() || "main.html";
+	connectedCallback() {
+		// normalize current file name (basename)
+		const currentPath = window.location.pathname || "/";
+		const currentBase = currentPath.split("/").pop() || "index.html";
 
-    const isActive = (page) => currentPage === page;
+		const getBasename = (p) => {
+			try {
+				const u = new URL(p, window.location.href);
+				return (u.pathname.split("/").pop() || "index.html");
+			} catch {
+				return (p.split("/").pop() || "index.html");
+			}
+		};
+
+		const isActive = (page) => {
+			const pageBase = getBasename(page);
+			if (currentBase === pageBase) return true;
+			if ((currentBase === "" || currentBase === "index.html" || currentPath === "/") && pageBase === "main.html") return true;
+			if (currentBase.replace(/\.html$/, "") === pageBase.replace(/\.html$/, "")) return true;
+			return false;
+		};
 
     // Check if current page is any group-related page
     const isGroupPage =
@@ -90,14 +108,14 @@ class SiteBottomBar extends HTMLElement {
 			>
 				<div class="flex justify-around items-center px-4 py-2" style="max-width: 600px; margin: 0 auto;">
 
-					<a href="main.html" class="nav-item ${isActive("main.html") ? "active" : ""}" 
-						style="color: ${isActive("main.html") ? "#A40606" : "#230007"};">
-						<svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" 
-							fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-							<path d="M3 12l2-2m0 0l7-7 7 7m-9 2v8m4-8v8m5 0h-4a2 2 0 01-2-2v-6H9v6a2 2 0 01-2 2H3"/>
-						</svg>
-						<span class="nav-label">Home</span>
-					</a>
+                    <a href="main.html" class="nav-item ${isActive("main.html") ? "active" : ""}" 
+                        style="color: ${isActive("main.html") ? "#A40606" : "#230007"};">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" 
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 12l2-2m0 0l7-7 7 7m-9 2v8m4-8v8m5 0h-4a2 2 0 01-2-2v-6H9v6a2 2 0 01-2 2H3"/>
+                        </svg>
+                        <span class="nav-label">Home</span>
+                    </a>
 
 					<a href="groups.html" class="nav-item ${isGroupPage ? "active" : ""}"
 						style="color: ${isGroupPage ? "#A40606" : "#230007"};">
@@ -109,51 +127,48 @@ class SiteBottomBar extends HTMLElement {
 						<span class="nav-label">Groups</span>
 					</a>
 
-					<a href="addTask.html" class="nav-item ${
-            isActive("addTask.html") ? "active" : ""
-          }"
-						style="color: ${isActive("addTask.html") ? "#A40606" : "#230007"};">
-						<svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" 
-							fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-							<path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
-							<path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2" />
-							<path d="M12 11v6" />
-							<path d="M9 14h6" />
-						</svg>
-						<span class="nav-label">Add</span>
-					</a>
+                    <a href="addTask.html" class="nav-item ${isActive("addTask.html") ? "active" : ""
+			}"
+                        style="color: ${isActive("addTask.html") ? "#A40606" : "#230007"};">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" 
+                            fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+                            <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2" />
+                            <path d="M12 11v6" />
+                            <path d="M9 14h6" />
+                        </svg>
+                        <span class="nav-label">Add</span>
+                    </a>
 
-					<a href="viewTasks.html" class="nav-item ${
-            isActive("viewTasks.html") ? "active" : ""
-          }"
-						style="color: ${isActive("viewTasks.html") ? "#A40606" : "#230007"};">
-						<svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" 
-							fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-							<path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
-							<path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2" />
-							<circle cx="12" cy="14" r="3" />
-							<path d="M12 12v2l1.5 1.5" />
-						</svg>
-						<span class="nav-label">To do</span>
-					</a>
+                    <a href="viewTasks.html" class="nav-item ${isActive("viewTasks.html") ? "active" : ""
+			}"
+                        style="color: ${isActive("viewTasks.html") ? "#A40606" : "#230007"};">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" 
+                            fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+                            <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2" />
+                            <circle cx="12" cy="14" r="3" />
+                            <path d="M12 12v2l1.5 1.5" />
+                        </svg>
+                        <span class="nav-label">To do</span>
+                    </a>
 
-					<a href="completedTask.html" class="nav-item ${
-            isActive("completedTask.html") ? "active" : ""
-          }"
-						style="color: ${isActive("completedTask.html") ? "#A40606" : "#230007"};">
-						<svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" 
-							fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-							<path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
-							<path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2" />
-							<path d="M9 14l2 2l4 -4" />
-						</svg>
-						<span class="nav-label">Done</span>
-					</a>
+                    <a href="completedTask.html" class="nav-item ${isActive("completedTask.html") ? "active" : ""
+			}"
+                        style="color: ${isActive("completedTask.html") ? "#A40606" : "#230007"};">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" 
+                            fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+                            <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2" />
+                            <path d="M9 14l2 2l4 -4" />
+                        </svg>
+                        <span class="nav-label">Done</span>
+                    </a>
 
-				</div>
-			</footer>
-		`;
-  }
+                </div>
+            </footer>
+        `;
+	}
 }
 
 customElements.define("site-bottom-bar", SiteBottomBar);
