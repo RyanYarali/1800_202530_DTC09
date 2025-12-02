@@ -84,18 +84,18 @@ onAuthReady(async (user) => {
         filtered.forEach((task) => {
             const card = document.createElement("div");
             card.classList.add("card");
-            if (task.name.length > 11 || task.course.length > 11) {
-                if (task.name.length > 11) {
-                    task.name = task.name.substring(0, 8) + "...";
+            if (task.name.length > 13 || task.course.length > 13) {
+                if (task.name.length > 13) {
+                    taskCut = task.name.substring(0, 10) + "...";
                 }
-                if (task.course.length > 11) {
-                    task.course = task.course.substring(0, 8) + "...";
+                if (task.course.length > 13) {
+                    courseCut = task.course.substring(0, 10) + "...";
                 }
             }
 
             card.innerHTML = `
-          <p style="grid-column: 1;">${task.course || "No course"}</p>
-          <p style="grid-column: 2;">${task.name || "Untitled task"}</p>
+          <p style="grid-column: 1;">${courseCut || task.course || "No course"}</p>
+          <p style="grid-column: 2;">${taskCut || task.name || "Untitled task"}</p>
           <p style="grid-column: 3;">${task.priority || "Normal"}</p>
           `;
 
@@ -119,6 +119,8 @@ onAuthReady(async (user) => {
     // Loop through each task and create a visual card for it
     querySnapshotDocs.forEach((doc) => {
         const task = doc.data();
+        var taskCut = null;
+        var courseCut = null;
         const card = document.createElement("div");
         card.classList.add("card");
         if (task.name.length > 13 || task.course.length > 13) {
