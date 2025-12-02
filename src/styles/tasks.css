@@ -81,7 +81,7 @@
   box-shadow: 0 4px 15px rgba(164, 6, 6, 0.15);
 }
 
-.page-form button {
+.page-form button, .group-button{
   border-radius: 25px;
   padding: 12px 25px;
   background-color: #a40606;
@@ -91,7 +91,7 @@
   box-shadow: 0 4px 15px rgba(164, 6, 6, 0.2);
 }
 
-.page-form button:hover {
+.page-form button:hover, .group-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(164, 6, 6, 0.25);
   background-color: #230007;
