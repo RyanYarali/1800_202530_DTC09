@@ -14,7 +14,6 @@ export default defineConfig({
                 profile: resolve(__dirname, "profile.html"),
                 review: resolve(__dirname, "review.html"),
                 faq: resolve(__dirname, "faq.html"),
-                aboutUs: resolve(__dirname, "aboutUs.html"),
                 taskDetail: resolve(__dirname, "taskDetail.html"),
                 addTask: resolve(__dirname, "addTask.html"),
                 viewTasks: resolve(__dirname, "viewTasks.html"),

@@ -62,7 +62,6 @@ class SiteNavbar extends HTMLElement {
           <!-- <a href="#">Home</a> -->
           <a href="review.html">Review</a>
           <a href="faq.html">FAQ</a>
-          <a href="aboutUs.html">About Us</a>
           
           <!-- Dark Mode Toggle in Hamburger Menu -->
           <div class="hamburger-theme-toggle" id="hamburgerThemeToggle" style="display:none;">
