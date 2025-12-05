@@ -5,6 +5,8 @@
 TaskMate is a student-focused app that helps you organize school tasks, track deadlines, and prioritize work by urgency — all in one clean, easy-to-use space.
 
 Built for COMP 1800, TaskMate applies User-Centred Design principles and agile development practices. The app uses Firebase Firestore to store user tasks in real time and supports simple task management to help students stay on top of their workload.
+
+
 ---
 
 ## Features
@@ -48,7 +50,7 @@ Built for COMP 1800, TaskMate applies User-Centred Design principles and agile d
 │   │   ├── site-footer.js
 │   │   ├── site-loader.js
 │   │   └── site-navbar.js
-│   ├── groups/                # Group-related modules
+│   ├── groups/                
 │   │   ├── groupsAddGroup.js
 │   │   ├── groupsAddTask.js
 │   │   ├── groupsEdit.js
@@ -56,21 +58,19 @@ Built for COMP 1800, TaskMate applies User-Centred Design principles and agile d
 │   │   ├── groupsSave.js
 │   │   ├── groupsTaskEdit.js
 │   │   └── groupsTasks.js
-│   ├── styles/                # CSS styles
+│   ├── styles/                
 │   │   ├── dark.css
 │   │   ├── overlay.css
 │   │   ├── signup.css
 │   │   ├── style.css
-│   │   └── tasks.css
-│   ├── firebase.js            # Firebase configuration (existing)
-│   ├── utils.js               # Utility/helper functions (existing)
+│   │   └── tasks.css                   
 │   ├── app.js
 │   ├── authentication.js
 │   ├── completedTask.js
-│   ├── firebaseConfig.js      # Optional: can wrap or replace firebase.js
+│   ├── firebaseConfig.js       
 │   ├── loader.js
 │   ├── loginSignup.js
-│   ├── main.js                # Main app script (entry point)
+│   ├── main.js               
 │   ├── mainDashboard.js
 │   ├── profile.js
 │   ├── review.js
@@ -83,38 +83,39 @@ Built for COMP 1800, TaskMate applies User-Centred Design principles and agile d
 ├── .gitignore              
 │
 ├── aboutUs.html               
-├── addTask.html               # Create new task page
-├── completedTask.html         # Completed tasks page
-├── faq.html                   # FAQ page
+├── addTask.html               
+├── completedTask.html        
+├── faq.html                   
 │
 ├── firebase.json              
 ├── firestore.indexes.json     
 ├── firestore.rules            
 │
-├── groupAddTask.html          # Add task within a group
-├── groupCreate.html           # Create group page
-├── groupDetail.html           # Group detail page
-├── groupTasks.html            # View tasks inside a group
-├── groups.html                # Groups overview page
+├── groupAddTask.html         
+├── groupCreate.html           
+├── groupDetail.html           
+├── groupTasks.html            
+├── groups.html               
 │
-├── index.html                 # Landing page
-├── login.html                 # Login page
-├── main.html                  # Main dashboard
+├── index.html                
+├── login.html                 
+├── main.html                  
 │
-├── package.json               # Project metadata & dependencies
-├── package-lock.json          # Dependency lock file
+├── package.json              
+├── package-lock.json          
 │
-├── profile.html               # User profile page
+├── profile.html               
 │
-├── review.html                # Review for developer page
+├── review.html                
 ├── skeleton.html             
 │
-├── taskDetail.html            # Task detail page (individual)
-├── taskDetailGroup.html       # Task detail page (inside a group)
-├── viewTasks.html             # View all tasks page
+├── taskDetail.html            
+├── taskDetailGroup.html       
+├── viewTasks.html            
 │
-├── vite.config.js             # Vite configuration
-└── README.md                  # Project documentation```
+├── vite.config.js             
+└── README.md                 
+ ```
 
 ---
 
@@ -135,6 +136,7 @@ Built for COMP 1800, TaskMate applies User-Centred Design principles and agile d
 
 ### Limitations
 
+- No real-time collaboration mode
 - No notifications or reminders
 - Limited accessibility features
 
